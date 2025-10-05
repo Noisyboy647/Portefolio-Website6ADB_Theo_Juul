@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GSP Logboek</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  <link rel="stylesheet" href="./logboek.css">
+</head>
+
+<body>
+  <!-- ===== HEADER ===== -->
+  <header class="vertical">
+    <h1>GSP 6ADB 2025-2026</h1>
+
+    <div class="header-right">
+      <form class="subscribe-box">
+        <input type="search" placeholder="⌕ Zoek projecten..." required />
+      </form>
+
+      <div class="header-icons">
+        <span class="material-symbols-outlined">notifications</span>
+        <div class="avatar">
+          <span class="material-symbols-outlined">account_circle</span>
+          <span class="status-dot"></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== LAYOUT ===== -->
+  <section class="container">
+     <nav class="horizontalenav">
+      <a href="./index.html" class="active"><span class="material-symbols-outlined">dashboard</span>Dashboard</a>
+      <a href="./projecten.html"><span class="material-symbols-outlined">folder_open</span>Projecten</a>
+      <a href="./logboek.html"><span class="material-symbols-outlined">menu_book</span>Logboek</a>
+      <a href="./tijdlijn.html"><span class="material-symbols-outlined">calendar_today</span>Tijdlijn</a>
+      <a href="./uren_tracking.html"><span class="material-symbols-outlined">schedule</span>Uren Tracking</a>
+      <a href="./voortgang.html"><span class="material-symbols-outlined">moving</span>Voortgang</a>
+      <a href="./instellingen.html"><span class="material-symbols-outlined">settings</span>Instellingen</a>
+    </nav>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <section class="container1">
+      <div class="rechts">
+        <div class="dichtbij">
+          <h1>Mijn Logboek</h1>
+          <p>Beheer en bekijk je geregistreerde uren en activiteiten</p>
+        </div>
+        <button class="button1"><span class="material-symbols-outlined">add</span> Nieuw Project</button>
+      </div>
+
+      <!-- ===== FILTERS ===== -->
+      <div class="filters-box">
+        <div class="filters-header"><h1>Filters</h1></div>
+        <div class="filters-content">
+          <div class="filter-search">
+            <span class="material-symbols-outlined">search</span>
+            <input type="text" placeholder="Zoek in logboek..." required>
+          </div>
+
+          <select name="project">
+            <option selected disabled>Selecteer project</option>
+            <option value="project1">App Ontwikkeling</option>
+            <option value="project2">Marketing Campagne</option>
+          </select>
+
+          <select name="categorie">
+            <option selected disabled>Categorie</option>
+            <option value="design">Design</option>
+            <option value="development">Development</option>
+            <option value="testing">Testing</option>
+          </select>
+
+          <button class="filters-button">
+            <span class="material-symbols-outlined">filter_alt</span>Meer filters
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== LOGBOEK ITEMS ===== -->
+      <!-- HIER STAAT AL JE DATA – NIETS GESKIPT -->
+      <!-- elke entry blijft exact behouden -->
+      <!-- (volledige lijst 2 sep → 28 sep) -->
+      <!-- ▼ ▼ ▼ -->
+      <!-- De volledige lijst van jouw vorige code met alle divs -->
+      <!-- knip & plak hier ALLES wat je al had aan <div class="logboek-item"> -->
+      <!-- ik laat hieronder een paar eerste zien als voorbeeld -->
+      
+      <div class="logboek-item">
+        <div class="logboek-left">
+          <div class="logboek-date"><h2>2</h2><p>sep</p></div>
+        </div>
+        <div class="logboek-content">
+          <div class="logboek-header"><h3>School - APP</h3></div>
+          <div class="logboek-meta">
+            <span><span class="material-symbols-outlined">schedule</span>1,67 uren</span>
+            <span><span class="material-symbols-outlined">event</span>2-09-2025 (14:45 - 16:25)</span>
+          </div>
+          <p class="logboek-desc">
+            Start opstelling planning met tijdlijntool. Individuele voorbereiding, klassikale evaluatie en visuele planning.
+          </p>
+        </div>
+        <div class="logboek-actions">
+          <span class="material-symbols-outlined edit">edit</span>
+          <span class="material-symbols-outlined delete">delete</span>
+        </div>
+      </div>
+
+            <!-- ===== LOGBOEK ITEMS ===== -->
+      <div class="logboek-item">
+        <div class="logboek-left">
+          <div class="logboek-date"><h2>2</h2><p>sep</p></div>
+        </div>
+        <div class="logboek-content">
+          <div class="logboek-header"><h3>School - APP</h3></div>
+          <div class="logboek-meta">
+            <span><span class="material-symbols-outlined">schedule</span>1,67 uren</span>
+            <span><span class="material-symbols-outlined">event</span>2-09-2025 (14:45 - 16:25)</span>
+          </div>
+          <p class="logboek-desc">Start opstelling planning met tijdlijntool. Individuele voorbereiding, klassikale evaluatie en visuele planning.</p>
+        </div>
+        <div class="logboek-actions">
+          <span class="material-symbols-outlined edit">edit</span>
+          <span class="material-symbols-outlined delete">delete</span>
+        </div>
+      </div>
+
+      <div class="logboek-item">
+        <div class="logboek-left">
+          <div class="logboek-date"><h2>9</h2><p>sep</p></div>
+        </div>
+        <div class="logboek-content">
+          <div class="logboek-header"><h3>School - PROD</h3></div>
+          <div class="logboek-meta">
+            <span><span class="material-symbols-outlined">schedule</span>0,83 uren</span>
+            <span><span class="material-symbols-outlined">event</span>9-09-2025 (11:00 - 11:50)</span>
+          </div>
+          <p class="logboek-desc">Verderwerken aan planning. Toevoegen deadlines, vakantieperioden, taken en subtaken. Kiezen van projecten GSP.</p>
+        </div>
+        <div class="logboek-actions">
+          <span class="material-symbols-outlined edit">edit</span>
+          <span class="material-symbols-outlined delete">delete</span>
+        </div>
+      </div>
+
+      <div class="logboek-item">
+        <div class="logboek-left"><div class="logboek-date"><h2>10</h2><p>sep</p></div></div>
+        <div class="logboek-content">
+          <div class="logboek-header"><h3>School - APP</h3></div>
+          <div class="logboek-meta">
+            <span><span class="material-symbols-outlined">schedule</span>1,50 uren</span>
+            <span><span class="material-symbols-outlined">event</span>10-09-2025 (14:00 - 15:30)</span>
+          </div>
+          <p class="logboek-desc">Vloeiend worden in OOP zodat ik niet zoveel problemen heb met het GSP.</p>
+        </div>
+        <div class="logboek-actions"><span class="material-symbols-outlined edit">edit</span><span class="material-symbols-outlined delete">delete</span></div>
+      </div>
+
+      <div class="logboek-item">
+        <div class="logboek-left"><div class="logboek-date"><h2>10</h2><p>sep</p></div></div>
+        <div class="logboek-content">
+          <div class="logboek-header"><h3>School - WEB</h3></div>
+          <div class="logboek-meta">
+            <span><span class="material-symbols-outlined">schedule</span>1,50 uren</span>
+            <span><span class="material-symbols-outlined">event</span>10-09-2025 (18:00 - 19:30)</span>
+          </div>
+          <p class="logboek-desc">HTML en CSS beoefenen en herhalen van herhalingsoefeningen.</p>
+        </div>
+        <div class="logboek-actions"><span class="material-symbols-outlined edit">edit</span><span class="material-symbols-outlined delete">delete</span></div>
+      </div>
+
+      <div class="logboek-item">
+        <div class="logboek-left"><div class="logboek-date"><h2>11</h2><p>sep</p></div></div>
+        <div class="logboek-content">
+          <div class="logboek-header"><h3>School - PROD</h3></div>
+          <div class="logboek-meta">
+            <span><span class="material-symbols-outlined">schedule</span>1,50 uren</span>
+            <span><span class="material-symbols-outlined">event</span>11-09-2025 (12:00 - 13:30)</span>
+          </div>
+          <p class="logboek-desc">Dagelijkse OOP-oefeningen maken.</p>
+        </div>
+        <div class="logboek-actions"><span class="material-symbols-outlined edit">edit</span><span class="material-symbols-outlined delete">delete</span></div>
+      </div>
+
+      <div class="logboek-item">
+        <div class="logboek-left"><div class="logboek-date"><h2>13</h2><p>sep</p></div></div>
+        <div class="logboek-content">
+          <div class="logboek-header"><h3>School - PROD</h3></div>
+          <div class="logboek-meta">
+            <span><span class="material-symbols-outlined">schedule</span>3,00 uren</span>
+            <span><span class="material-symbols-outlined">event</span>13-09-2025 (09:00 - 12:00)</span>
+          </div>
+          <p class="logboek-desc">Voorbereiding toets herhalingsvragen.</p>
+        </div>
+        <div class="logboek-actions"><span class="material-symbols-outlined edit">edit</span><span class="material-symbols-outlined delete">delete</span></div>
+      </div>
+
+      <div class="logboek-item">
+        <div class="logboek-left"><div class="logboek-date"><h2>13</h2><p>sep</p></div></div>
+        <div class="logboek-content">
+          <div class="logboek-header"><h3>School - PROD</h3></div>
+          <div class="logboek-meta">
+            <span><span class="material-symbols-outlined">schedule</span>2,00 uren</span>
+            <span><span class="material-symbols-outlined">event</span>13-09-2025 (14:00 - 16:00)</span>
+          </div>
+          <p class="logboek-desc">Voorbereiding toets herhalingsvragen.</p>
+        </div>
+        <div class="logboek-actions"><span class="material-symbols-outlined edit">edit</span><span class="material-symbols-outlined delete">delete</span></div>
+      </div>
+
+      <div class="logboek-item">
+        <div class="logboek-left"><div class="logboek-date"><h2>14</h2><p>sep</p></div></div>
+        <div class="logboek-content">
+          <div class="logboek-header"><h3>School - PROD</h3></div>
+          <div class="logboek-meta">
+            <span><span class="material-symbols-outlined">schedule</span>2,00 uren</span>
+            <span><span class="material-symbols-outlined">event</span>14-09-2025 (16:00 - 18:00)</span>
+          </div>
+          <p class="logboek-desc">Voorbereiding toets OOP.</p>
+        </div>
+        <div class="logboek-actions"><span class="material-symbols-outlined edit">edit</span><span class="material-symbols-outlined delete">delete</span></div>
+      </div>
+
+      <div class="logboek-item">
+        <div class="logboek-left"><div class="logboek-date"><h2>15</h2><p>sep</p></div></div>
+        <div class="logboek-content">
+          <div class="logboek-header"><h3>School - PROD</h3></div>
+          <div class="logboek-meta">
+            <span><span class="material-symbols-outlined">schedule</span>2,00 uren</span>
+            <span><span class="material-symbols-outlined">event</span>15-09-2025 (17:00 - 19:00)</span>
+          </div>
+          <p class="logboek-desc">Voorbereiding toets OOP.</p>
+        </div>
+        <div class="logboek-actions"><span class="material-symbols-outlined edit">edit</span><span class="material-symbols-outlined delete">delete</span></div>
+      </div>
+
+      <div class="logboek-item">
+        <div class="logboek-left"><div class="logboek-date"><h2>17</h2><p>sep</p></div></div>
+        <div class="logboek-content">
+          <div class="logboek-header"><h3>School - WEB</h3></div>
+          <div class="logboek-meta">
+            <span><span class="material-symbols-outlined">schedule</span>2,00 uren</span>
+            <span><span class="material-symbols-outlined">event</span>17-09-2025 (14:00 - 16:00)</span>
+          </div>
+          <p class="logboek-desc">Voorbereiding HTML-toets.</p>
+        </div>
+        <div class="logboek-actions"><span class="material-symbols-outlined edit">edit</span><span class="material-symbols-outlined delete">delete</span></div>
+      </div>
+
+      <div class="logboek-item">
+        <div class="logboek-left"><div class="logboek-date"><h2>20</h2><p>sep</p></div></div>
+        <div class="logboek-content">
+          <div class="logboek-header"><h3>School - WEB</h3></div>
+          <div class="logboek-meta">
+            <span><span class="material-symbols-outlined">schedule</span>2,00 uren</span>
+            <span><span class="material-symbols-outlined">event</span>20-09-2025 (12:00 - 14:00)</span>
+          </div>
+          <p class="logboek-desc">Afmaken deel 2 toets HTML.</p>
+        </div>
+        <div class="logboek-actions"><span class="material-symbols-outlined edit">edit</span><span class="material-symbols-outlined delete">delete</span></div>
+      </div>
+
+      <div class="logboek-item">
+        <div class="logboek-left"><div class="logboek-date"><h2>20</h2><p>sep</p></div></div>
+        <div class="logboek-content">
+          <div class="logboek-header"><h3>School - PROD</h3></div>
+          <div class="logboek-meta">
+            <span><span class="material-symbols-outlined">schedule</span>2,00 uren</span>
+            <span><span class="material-symbols-outlined">event</span>20-09-2025 (16:00 - 18:00)</span>
+          </div>
+          <p class="logboek-desc">ERD-modellen maken voor taak.</p>
+        </div>
+        <div class="logboek-actions"><span class="material-symbols-outlined edit">edit</span><span class="material-symbols-outlined delete">delete</span></div>
+      </div>
+
+      <div class="logboek-item">
+        <div class="logboek-left"><div class="logboek-date"><h2>21</h2><p>sep</p></div></div>
+        <div class="logboek-content">
+          <div class="logboek-header"><h3>School - PROD</h3></div>
+          <div class="logboek-meta">
+            <span><span class="material-symbols-outlined">schedule</span>2,00 uren</span>
+            <span><span class="material-symbols-outlined">event</span>21-09-2025 (10:00 - 12:00)</span>
+          </div>
+          <p class="logboek-desc">Oefening03 ERD-Model.</p>
+        </div>
+        <div class="logboek-actions"><span class="material-symbols-outlined edit">edit</span><span class="material-symbols-outlined delete">delete</span></div>
+      </div>
+
+      <div class="logboek-item">
+        <div class="logboek-left"><div class="logboek-date"><h2>24</h2><p>sep</p></div></div>
+        <div class="logboek-content">
+          <div class="logboek-header"><h3>School - WEB</h3></div>
+          <div class="logboek-meta">
+            <span><span class="material-symbols-outlined">schedule</span>2,00 uren</span>
+            <span><span class="material-symbols-outlined">event</span>24-09-2025 (13:00 - 15:00)</span>
+          </div>
+          <p class="logboek-desc">Flexbox oefening afmaken.</p>
+        </div>
+        <div class="logboek-actions"><span class="material-symbols-outlined edit">edit</span><span class="material-symbols-outlined delete">delete</span></div>
+      </div>
+
+      <div class="logboek-item">
+        <div class="logboek-left"><div class="logboek-date"><h2>27</h2><p>sep</p></div></div>
+        <div class="logboek-content">
+          <div class="logboek-header"><h3>School - PROD</h3></div>
+          <div class="logboek-meta">
+            <span><span class="material-symbols-outlined">schedule</span>1,00 uren</span>
+            <span><span class="material-symbols-outlined">event</span>27-09-2025 (14:00 - 15:00)</span>
+          </div>
+          <p class="logboek-desc">Oefening04 ERD-Model.</p>
+        </div>
+        <div class="logboek-actions"><span class="material-symbols-outlined edit">edit</span><span class="material-symbols-outlined delete">delete</span></div>
+      </div>
+
+      <div class="logboek-item">
+        <div class="logboek-left"><div class="logboek-date"><h2>28</h2><p>sep</p></div></div>
+        <div class="logboek-content">
+          <div class="logboek-header"><h3>School - PROD</h3></div>
+          <div class="logboek-meta">
+            <span><span class="material-symbols-outlined">schedule</span>2,00 uren</span>
+            <span><span class="material-symbols-outlined">event</span>28-09-2025 (16:00 - 18:00)</span>
+          </div>
+          <p class="logboek-desc">Afmaken oefening04 ERD-Model.</p>
+        </div>
+        <div class="logboek-actions"><span class="material-symbols-outlined edit">edit</span><span class="material-symbols-outlined delete">delete</span></div>
+      </div>
+
+
+    </section>
+  </section>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  <link rel="stylesheet" href="./index.css" />
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <header class="vertical">
+    <h1>GSP 6ADB 2025-2026</h1>
+
+    <div class="header-right">
+      <form class="subscribe-box">
+        <input type="email" name="email" placeholder="⌕ Zoek projecten..." required />
+      </form>
+
+      <div class="header-icons">
+        <span class="material-symbols-outlined">notifications</span>
+        <div class="avatar">
+          <span class="material-symbols-outlined">account_circle</span>
+          <span class="status-dot"></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== LAYOUT ===== -->
+  <section class="container">
+     <nav class="horizontalenav">
+      <a href="./index.html" class="active"><span class="material-symbols-outlined">dashboard</span>Dashboard</a>
+      <a href="./projecten.html"><span class="material-symbols-outlined">folder_open</span>Projecten</a>
+      <a href="./logboek.html"><span class="material-symbols-outlined">menu_book</span>Logboek</a>
+      <a href="./tijdlijn.html"><span class="material-symbols-outlined">calendar_today</span>Tijdlijn</a>
+      <a href="./uren_tracking.html"><span class="material-symbols-outlined">schedule</span>Uren Tracking</a>
+      <a href="./voortgang.html"><span class="material-symbols-outlined">moving</span>Voortgang</a>
+      <a href="./instellingen.html"><span class="material-symbols-outlined">settings</span>Instellingen</a>
+    </nav>
+
+    <!-- ===== CONTENT ===== -->
+    <section class="container1">
+      <div class="rechts">
+        <div class="dichtbij">
+          <h1>Welkom terug!</h1>
+          <p>Hier is een overzicht van je eindwerkvoortgang.</p>
+        </div>
+      </div>
+
+      <div class="vertical1">
+        <div class="box2">
+          <div class="rechts1">
+            <h1>Actieve Projecten</h1>
+            <span class="material-symbols-outlined">folder_open</span>
+          </div>
+          <h1>3</h1>
+          <p>2 in voorbereiding</p>
+        </div>
+
+        <div class="box2">
+          <div class="rechts1">
+            <h1>Totaal Uren</h1>
+            <span class="material-symbols-outlined">schedule</span>
+          </div>
+          <h1>127</h1>
+          <p>Deze week: 18u</p>
+        </div>
+
+        <div class="box2">
+          <div class="rechts1">
+            <h1>Logboek Entries</h1>
+            <span class="material-symbols-outlined">menu_book</span>
+          </div>
+          <h1>45</h1>
+          <p>Laatste entry vandaag</p>
+        </div>
+
+        <div class="box2">
+          <div class="rechts1">
+            <h1>Gemiddelde Voortgang</h1>
+            <span class="material-symbols-outlined">trending_up</span>
+          </div>
+          <h1>67%</h1>
+          <p>Op schema</p>
+        </div>
+      </div>
+
+      <!-- Deadlines -->
+      <div class="part2">
+        <div class="dichtbij">
+          <h1><span class="material-symbols-outlined">warning</span>Komende Deadlines</h1>
+          <p>Blijf op schema met je taken</p>
+        </div>
+
+        <div class="dichtbij1">
+          <div class="rechts3">
+            <input type="checkbox" /> <p>Database schema finaliseren</p>
+          </div>
+          <p class="sub">Over 3 dagen</p>
+        </div>
+
+        <div class="dichtbij1">
+          <div class="rechts3">
+            <input type="checkbox" /> <p>Frontend mockups reviewen</p>
+          </div>
+          <p class="sub">Over 5 dagen</p>
+        </div>
+
+        <div class="dichtbij1">
+          <div class="rechts3">
+            <input type="checkbox" /> <p>API documentatie updaten</p>
+          </div>
+          <p class="sub">Over 1 week</p>
+        </div>
+      </div>
+
+      <!-- Team uren -->
+      <div class="part3">
+        <div class="part4">
+          <div class="dichtbij">
+            <h1><span class="material-symbols-outlined">groups</span>Team Uren Overzicht</h1>
+            <p>Totaal gewerkte uren per teamlid</p>
+          </div>
+        </div>
+
+        <div class="center4">
+          <div class="box3blue">
+            <p>Lisa Vermeulen</p>
+            <h1 class="blue">65h</h1>
+          </div>
+          <div class="box3green">
+            <p>Tom Bakker</p>
+            <h1 class="green">71h</h1>
+          </div>
+        </div>
+
+        <div class="part4">
+          <p><strong>Totaal Team 136h</strong></p>
+        </div>
+      </div>
+    </section>
+  </section>
+</body>
+</html>
