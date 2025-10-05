@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Voortgang</title>
+  <link rel="stylesheet" href="../Voortgang.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
+<body>
+  <header class="vertical">
+    <h1>GSP 6ADB 2025-2026</h1>
+
+    <div class="header-right">
+      <form class="subscribe-box">
+        <input type="email" name="email" placeholder="⌕ Zoek projecten..." required />
+      </form>
+
+      <div class="header-icons">
+        <span class="material-symbols-outlined">notifications</span>
+        <div class="avatar">
+          <span class="material-symbols-outlined">account_circle</span>
+          <span class="status-dot"></span>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section class="container">
+    <nav class="horizontalenav">
+        <a href="./dashboard.html" class="active"><span class="material-symbols-outlined">dashboard</span>Dashboard</a>
+        <a href="./projecten.html"><span class="material-symbols-outlined">folder_open</span>Projecten</a>
+        <a href="./logboek.html"><span class="material-symbols-outlined">menu_book</span>Logboek</a>
+        <a href="./tijdlijn.html"><span class="material-symbols-outlined">calendar_today</span>Tijdlijn</a>
+        <a href="./uren_tracking.html"><span class="material-symbols-outlined">schedule</span>Uren Tracking</a>
+        <a href="./voortgang.html"><span class="material-symbols-outlined">moving</span>Voortgang</a>
+        <a href="./instellingen.html"><span class="material-symbols-outlined">settings</span>Instellingen</a>
+      </nav>
+    <main class="content">
+      <section class="header">
+        <h1>Project Voortgang</h1>
+        <p>Alle Projecten — Status en voortgang van je eindwerken</p>
+        <button class="new-project">+ Nieuw Project</button>
+      </section>
+
+      <section class="project-list">
+        <div class="project">
+          <h2>Website Redesign</h2>
+          <p>Frontend Development</p>
+          <p class="meta">Deadline: 01 Dec 2024</p>
+          <span class="status done">Voltooid</span>
+          <div class="progress"><div class="bar" style="width:100%"></div></div>
+          <span class="percent">100%</span>
+        </div>
+
+        <div class="project">
+          <h2>E-commerce Platform</h2>
+          <p>Full-stack Development</p>
+          <p class="meta">Deadline: 15 Dec 2024</p>
+          <span class="status in-progress">In Uitvoering</span>
+          <div class="progress"><div class="bar" style="width:75%"></div></div>
+          <span class="percent">75%</span>
+        </div>
+
+        <div class="project">
+          <h2>Mobile App Design</h2>
+          <p>UI/UX Design</p>
+          <p class="meta">Deadline: 22 Dec 2024</p>
+          <span class="status in-progress">In Uitvoering</span>
+          <div class="progress"><div class="bar" style="width:45%"></div></div>
+          <span class="percent">45%</span>
+        </div>
+
+        <div class="project">
+          <h2>Database Optimization</h2>
+          <p>Backend Development</p>
+          <p class="meta">Deadline: 10 Dec 2024</p>
+          <span class="status almost-done">Bijna Klaar</span>
+          <div class="progress"><div class="bar" style="width:90%"></div></div>
+          <span class="percent">90%</span>
+        </div>
+
+        <div class="project">
+          <h2>API Integration</h2>
+          <p>Backend Development</p>
+          <p class="meta">Deadline: 30 Jan 2025</p>
+          <span class="status not-started">Niet Gestart</span>
+          <div class="progress"><div class="bar" style="width:0%"></div></div>
+          <span class="percent">0%</span>
+        </div>
+
+        <div class="project">
+          <h2>User Authentication</h2>
+          <p>Security Implementation</p>
+          <p class="meta">Deadline: 15 Feb 2025</p>
+          <span class="status not-started">Niet Gestart</span>
+          <div class="progress"><div class="bar" style="width:0%"></div></div>
+          <span class="percent">0%</span>
+        </div>
+      </section>
+
+      <section class="summary">
+        <div class="stat">
+          <h3>Voltooide Projecten</h3>
+          <p class="number">1</p>
+        </div>
+        <div class="stat">
+          <h3>In Uitvoering</h3>
+          <p class="number">3</p>
+        </div>
+        <div class="stat">
+          <h3>Nog Niet Gestart</h3>
+          <p class="number">2</p>
+        </div>
+        <p class="footer-note">Overzicht van alle projecten en hun huidige status.</p>
+      </section>
+    </section>
+  </main>
+</body>
+</html>

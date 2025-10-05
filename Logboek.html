@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSP</title>
+    <link rel="stylesheet" href="../Logboek.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
+<body>
+    <header class="vertical">
+    <h1>GSP 6ADB 2025-2026</h1>
+
+    <div class="header-right">
+      <form class="subscribe-box">
+        <input type="email" name="email" placeholder="⌕ Zoek projecten..." required />
+      </form>
+
+      <div class="header-icons">
+        <span class="material-symbols-outlined">notifications</span>
+        <div class="avatar">
+          <span class="material-symbols-outlined">account_circle</span>
+          <span class="status-dot"></span>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section class=" container">
+    <nav class="horizontalenav">
+        <a href="./dashboard.html" class="active"><span class="material-symbols-outlined">dashboard</span>Dashboard</a>
+        <a href="./projecten.html"><span class="material-symbols-outlined">folder_open</span>Projecten</a>
+        <a href="./logboek.html"><span class="material-symbols-outlined">menu_book</span>Logboek</a>
+        <a href="./tijdlijn.html"><span class="material-symbols-outlined">calendar_today</span>Tijdlijn</a>
+        <a href="./uren_tracking.html"><span class="material-symbols-outlined">schedule</span>Uren Tracking</a>
+        <a href="./voortgang.html"><span class="material-symbols-outlined">moving</span>Voortgang</a>
+        <a href="./instellingen.html"><span class="material-symbols-outlined">settings</span>Instellingen</a>
+        </nav>
+        <section class="logboek">
+            <h3>Logboek</h3>
+            <p>Registreer je dagelijkse werkzaamheden en uren</p>
+            <button class="blue-white">+ Nieuwe Entry</button>
+            <div class="filterbox">
+                <p><strong>Filters</strong></p>
+                <div class="vertical">
+                    <img src="/images/search_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" width="24px" height="24px">
+                    <input type="text" placeholder="Zoek in logboek...">
+                    <select>Selecteer een project
+                        <option value="" disabled selected>Selecteer een project</option>
+                    </select>
+                    <select>Categorie
+                        <option value="" disabled selected>Categorie</option></select>
+                    <button class="grey-black"><img src="/images/filter_alt_24dp_000000_FILL0_wght400_GRAD0_opsz24.png">Meer filters</button>
+                </div>
+            </div>
+            <div class="logbox">
+                <div class="vertical">
+                    <strong><p class="Date">9</p></strong>
+                    <h4>E-commerce Platform</h4>
+                    <p class="devepcir cir">Development</p>
+                    <div class="logbox-meta">
+                        <div class="Edit"><img src="/images/edit_square_24dp_000000_FILL0_wght400_GRAD0_opsz24.png"></div>
+                        <div class="Trash"><img src="/images/delete_24dp_EA3323_FILL0_wght400_GRAD0_opsz24.png"></div>
+                    </div>
+                </div>
+                <div class="vertical lig">
+                    <p>dec</p>
+                    <p><img src="/images/schedule_24dp_000000_FILL0_wght400_GRAD0_opsz24.png">4.5 uren</p>
+                    <p><img src="/images/calendar_today_24dp_000000_FILL0_wght400_GRAD0_opsz24.png"> 9-12-2024</p>
+                </div>
+                <p>Implementatie van het betalingssysteem met Stripe. Gewerkt aan frontend validatie en error handling. Ook unit tests toegevoegd voor de payment service.</p>
+                <div class="vertical"><p class="Categorie">Frontend</p><p class="Categorie">Stripe</p><p class="Categorie">Testing</p></div>
+            </div>
+            <div class="logbox">
+                <div class="vertical">
+                    <strong><p class="Date">8</p></strong>
+                    <h4>E-commerce Platform</h4>
+                    <p class="resercir">Research</p>
+                    <div class="logbox-header-right">
+                        <div class="Edit"><img src="/images/edit_square_24dp_000000_FILL0_wght400_GRAD0_opsz24.png"></div>
+                        <div class="Trash"><img src="/images/delete_24dp_EA3323_FILL0_wght400_GRAD0_opsz24.png"></div>
+                    </div>
+                </div>
+                <div class="vertical lig">
+                    <p>dec</p>
+                    <p><img src="/images/schedule_24dp_000000_FILL0_wght400_GRAD0_opsz24.png">3 uren</p>
+                    <p><img src="/images/calendar_today_24dp_000000_FILL0_wght400_GRAD0_opsz24.png"> 8-12-2024</p>
+                </div>
+                <p>Research naar beste practices voor e-commerce security. Documentatie gelezen over OWASP guidelines en PCI compliance requirements.</p>
+                <div class="vertical"><p class="Categorie">Security</p><p class="Categorie">Documentation</p><p class="Categorie">Research</p></div>
+            </div>
+            <!--
+            <div class="logbox"></div>
+            <div class="logbox"></div>-->
+            
+        </section>
+  </section>
+</body>
+</html>
