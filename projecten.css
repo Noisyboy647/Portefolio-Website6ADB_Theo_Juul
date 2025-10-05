@@ -128,9 +128,10 @@ header h1 { color: #3a5edb; font-weight: 700; }
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 .rechts1 {
+  padding-top: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 20px;
 }
 .rechts2 {
   display: flex;
