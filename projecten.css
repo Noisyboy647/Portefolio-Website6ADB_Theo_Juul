@@ -1,4 +1,6 @@
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+   box-sizing: border-box; margin: 0; padding: 0; 
+  }
 
 body {
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
@@ -16,7 +18,9 @@ header {
   padding: 0 40px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.15);
 }
-header h1 { color: #3a5edb; font-weight: 700; }
+header h1 {
+   color: #3a5edb; font-weight: 700; 
+  }
 
 .header-right {
   display: flex;
@@ -49,8 +53,12 @@ header h1 { color: #3a5edb; font-weight: 700; }
   cursor: pointer;
   transition: .2s;
 }
-.header-icons .material-symbols-outlined:hover { color: #2b37d3; }
-.avatar { position: relative; }
+.header-icons .material-symbols-outlined:hover {
+   color: #2b37d3; 
+  }
+.avatar { 
+  position: relative; 
+}
 .status-dot {
   position: absolute;
   top: 2px;
@@ -62,7 +70,9 @@ header h1 { color: #3a5edb; font-weight: 700; }
 }
 
 /* ===== NAV ===== */
-.container { display: flex; }
+.container { 
+  display: flex;
+ }
 .horizontalenav {
   background: #fff;
   width: 250px;
@@ -103,7 +113,10 @@ header h1 { color: #3a5edb; font-weight: 700; }
   align-items: center;
   margin-bottom: 25px;
 }
-.rechts h1 { font-size: 24px; margin-bottom: 4px; }
+.rechts h1 { 
+  font-size: 24px; 
+  margin-bottom: 4px; 
+}
 .button1 {
   background: #3d45db;
   color: #fff;
@@ -116,7 +129,9 @@ header h1 { color: #3a5edb; font-weight: 700; }
   cursor: pointer;
   font-weight: 600;
 }
-.button1:hover { background: #2c34c7; }
+.button1:hover {
+   background: #2c34c7; 
+  }
 
 /* ===== PROJECT BOX ===== */
 .box {
@@ -148,17 +163,27 @@ header h1 { color: #3a5edb; font-weight: 700; }
   text-align: center;
   color: white;
 }
-.button2 { background: #3d45db; }
-.button3 { background: #22c55e; }
+.button2 { 
+  background: #3d45db;
+ }
+.button3 {
+   background: #22c55e;
+   }
 
 .Loadingbar, .Loadingbar1, .Loadingbar2 {
   height: 10px;
   border-radius: 20px;
   margin: 5px 0 15px;
 }
-.Loadingbar { background: linear-gradient(to right, #3b82f6 75%, #e5e7eb 25%); }
-.Loadingbar1 { background: linear-gradient(to right, #3b82f6 45%, #e5e7eb 55%); }
-.Loadingbar2 { background: linear-gradient(to right, #3b82f6 90%, #e5e7eb 10%); }
+.Loadingbar {
+   background: linear-gradient(to right, #3b82f6 75%, #e5e7eb 25%);
+   }
+.Loadingbar1 { 
+  background: linear-gradient(to right, #3b82f6 45%, #e5e7eb 55%);
+ }
+.Loadingbar2 { 
+  background: linear-gradient(to right, #3b82f6 90%, #e5e7eb 10%);
+ }
 
 .buttons, .buttons2 {
   background: #f1f1f1;
@@ -170,7 +195,9 @@ header h1 { color: #3a5edb; font-weight: 700; }
   align-items: center;
   justify-content: center;
 }
-.rechts1, .buttons2 { gap: 10px; }
+.rechts1, .buttons2 {
+   gap: 10px; 
+  }
 
 .line {
   height: 1px;
@@ -192,4 +219,6 @@ header h1 { color: #3a5edb; font-weight: 700; }
   cursor: pointer;
   font-weight: 600;
 }
-.open-btn:hover { background: #2c34c7; }
+.open-btn:hover { 
+  background: #2c34c7; 
+}

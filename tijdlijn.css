@@ -1,4 +1,8 @@
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
 
 body {
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
@@ -53,8 +57,12 @@ header h1 {
   cursor: pointer;
   transition: .2s;
 }
-.header-icons .material-symbols-outlined:hover { color: #2b37d3; }
-.avatar { position: relative; }
+.header-icons .material-symbols-outlined:hover {
+   color: #2b37d3; 
+  }
+.avatar { 
+  position: relative;
+ }
 .status-dot {
   position: absolute;
   top: 2px;
@@ -66,7 +74,9 @@ header h1 {
 }
 
 /* ===== NAV ===== */
-.container { display: flex; }
+.container { 
+  display: flex;
+ }
 
 .horizontalenav {
   background: #fff;
@@ -107,7 +117,9 @@ header h1 {
   align-items: center;
   margin-bottom: 25px;
 }
-.rechts h1 { font-size: 24px; margin-bottom: 4px; }
+.rechts h1 { 
+  font-size: 24px; margin-bottom: 4px;
+ }
 .button1 {
   background: #3d45db;
   color: #fff;
@@ -120,7 +132,9 @@ header h1 {
   cursor: pointer;
   font-weight: 600;
 }
-.button1:hover { background: #2c34c7; }
+.button1:hover { 
+  background: #2c34c7; 
+}
 
 /* ===== BOXES ===== */
 .box {
