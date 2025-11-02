@@ -176,13 +176,13 @@ header h1 {
   margin: 5px 0 15px;
 }
 .Loadingbar {
-   background: linear-gradient(to right, #3b82f6 75%, #e5e7eb 25%);
+   background: linear-gradient(to right, #3b82f6 100%, #e5e7eb 25%);
    }
 .Loadingbar1 { 
-  background: linear-gradient(to right, #3b82f6 45%, #e5e7eb 55%);
+  background: linear-gradient(to right, #3b82f6 60%, #e5e7eb 55%);
  }
 .Loadingbar2 { 
-  background: linear-gradient(to right, #3b82f6 90%, #e5e7eb 10%);
+  background: linear-gradient(to right, #3b82f6 0%, #e5e7eb 0%);
  }
 
 .buttons, .buttons2 {
@@ -221,4 +221,88 @@ header h1 {
 }
 .open-btn:hover { 
   background: #2c34c7; 
+}
+
+
+
+
+.fietscontrole-card {
+  background: #fff;
+  border-radius: 15px;
+  border: 1px solid #d1d5db;
+  padding: 25px;
+  max-width: 400px;
+  margin: 20px auto;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  font-family: system-ui, sans-serif;
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fietscontrole-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.status.in-progress {
+  background: #f59e0b;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.card-description {
+  font-size: 0.9rem;
+  color: #374151;
+  margin-bottom: 20px;
+}
+
+.card-details .detail {
+  margin-bottom: 12px;
+  font-size: 0.85rem;
+}
+
+.progress-bar {
+  background: #e5e7eb;
+  height: 10px;
+  border-radius: 10px;
+  margin-top: 6px;
+  width: 100%;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #3b82f6;
+  border-radius: 10px 0 0 10px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.open-btn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.open-btn:hover {
+  background: #2563eb;
 }

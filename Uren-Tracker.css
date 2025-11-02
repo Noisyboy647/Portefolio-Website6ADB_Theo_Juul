@@ -1,92 +1,12 @@
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0;
+}
 body {
-  font-family: "Segoe UI", sans-serif;
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
   background: #f6f8fa;
-  margin: 0;
-  padding: 2rem;
   color: #222;
-}
-
-.content {
-  max-width: 900px;
-  margin: auto;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.header h1 {
-  font-size: 2rem;
-  margin-bottom: 0.2rem;
-}
-
-.header p {
-  color: #666;
-  margin: 0;
-}
-
-.totals {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-
-.card {
-  background: #fff;
-  padding: 1.2rem 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  flex: 1 1 180px;
-  text-align: center;
-}
-
-.card h2 {
-  font-size: 1rem;
-  color: #333;
-  margin-bottom: 0.4rem;
-}
-
-.card .number {
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin: 0.3rem 0;
-}
-
-.card span {
-  color: #777;
-  font-size: 0.85rem;
-}
-
-.entries {
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.entries h2 {
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-}
-
-.entry {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #eee;
-  padding: 0.8rem 0;
-}
-
-.entry:last-child {
-  border-bottom: none;
-}
-
-.info h3 {
-  margin: 0;
-  font-size: 1rem;
 }
 header {
   height: 80px;
@@ -106,18 +26,64 @@ header h1 {
   align-items: center;
   gap: 25px;
 }
+.subscribe-box {
+  background: #fff;
+  border-radius: 8px;
+  padding: 4px 12px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+}
+.subscribe-box input {
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 14px;
+  width: 220px;
+}
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.header-icons .material-symbols-outlined {
+  font-size: 26px;
+  color: #3d45db;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.header-icons .material-symbols-outlined:hover {
+  color: #2b37d3;
+}
+.avatar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.status-dot {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  background: #3d45db;
+  border-radius: 50%;
+}
+.container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
 .horizontalenav {
   background: #fff;
   width: 250px;
-  min-height: 100vh;
   border-right: 1px solid #d0d0d0;
   display: flex;
   flex-direction: column;
   padding: 30px 20px;
   gap: 10px;
 }
-
-.container { display: flex; }
 .horizontalenav a {
   display: flex;
   align-items: center;
@@ -127,25 +93,148 @@ header h1 {
   font-weight: 500;
   border-radius: 8px;
   padding: 10px 12px;
+  white-space: nowrap;
 }
 .horizontalenav a:hover,
 .horizontalenav a.active {
   background: #3d45db;
   color: #fff;
 }
-.info p {
-  margin: 0.2rem 0;
-  color: #555;
+.content {
+  flex: 1;
+  padding: 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.2rem;
+}
+.header p {
+  color: #666;
+  margin: 0;
+}
+.totals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start;
 }
 
-.meta {
+.justify-content-between{
+  justify-content: space-between;
+  display: flex;
+}
+
+.card {
+  background: #fff;
+  padding: 1.2rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  flex: 0 0 200px;
+  text-align: left;
+}
+.card h2 {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 0.4rem;
+}
+.card .number {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0.3rem 0;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.special1{
+  color: darkblue;
+}
+
+.special2{
+  color: green;
+}
+
+.button1{
+  text-align: center;
+  background-color: #2b37d3;
+  border-radius: 15px;
+  color: white;
+  width: 100px;
+  height: 25px;
+}
+
+
+
+
+.card span {
   color: #777;
   font-size: 0.85rem;
 }
 
+
+/* Ruimte tussen de entries */
+.entries {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* ruimte tussen de blokken */
+}
+
+/* Basisstijl voor elke entry */
+.entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f9fb;
+  padding: 1rem 1.2rem;
+  border-radius: 10px;
+  text-align: left;
+}
+
 .hours {
   font-weight: bold;
-  color: #0078ff;
-  font-size: 1rem;
-  margin-left: 1rem;
+  font-size: 1.8rem;
+  color: inherit;
+}
+
+
+/* Kleuren per persoon */
+.entry.juul {
+  background-color: #0078ff;
+  color: #fff;
+}
+
+.entry.juul .hours {
+  color: #cce5ff;
+}
+
+.entry.theo {
+  background-color: #34c759;
+  color: #fff;
+}
+
+.entry.theo .hours {
+  color: #d2f8d2;
+}
+
+/* Extra netjes */
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
