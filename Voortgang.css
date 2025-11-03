@@ -133,7 +133,6 @@ header.vertical h1 {
   display: flex;
   flex-direction: column;
   padding: 40px;
-  border: solid 1px black;
 }
 
 .row{
@@ -343,6 +342,7 @@ header h1 {
   color: black;
   width: 300px;
   position: relative;
+  display: flex;
   height: 100px;
 }
 
