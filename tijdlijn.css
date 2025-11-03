@@ -118,7 +118,8 @@ header h1 {
   margin-bottom: 25px;
 }
 .rechts h1 { 
-  font-size: 24px; margin-bottom: 4px;
+  font-size: 24px;
+  margin-bottom: 4px;
  }
 .button1 {
   background: #3d45db;
@@ -158,6 +159,8 @@ header h1 {
 }
 
 iframe {
+  height: 1000px;
   border-radius: 10px;
   border: 1px solid #ccc;
+  display: block;
 }
