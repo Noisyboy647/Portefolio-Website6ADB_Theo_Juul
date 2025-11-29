@@ -289,18 +289,18 @@ input[type="checkbox"] {
 
 
 .projectbeschrijving2 img {
-    padding-top: 20px;
     width: 90%;
     max-width: 1000px; 
     height: auto;
     display: block;
     margin: 0 auto;
-    border-radius: 8px; 
+    border-radius: 10px; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
 }
 
 
 .projectbeschrijving2 h1 {
+    padding-bottom: 20px;
     text-align: center;
     justify-content: center;
     align-items: center;
