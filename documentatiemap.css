@@ -129,12 +129,18 @@ header h1 {
   gap: 20px;
 }
 .box2 {
+  overflow: hidden;
   flex: 1;
   min-width: 250px;
   background: #f2f2f2;
   color: #000;
   border-radius: 12px;
-  padding: 20px;
+  padding-top: 20px;
+  justify-content: center;
+  flex-direction: column;
+  padding-bottom: 20px;
+  align-items: center;
+  display: flex;
   box-shadow: 0 2px 5px rgba(0,0,0,0.25);
 }
 .rechts1 {
@@ -149,6 +155,12 @@ header h1 {
 .box2 a {
   color: #3a5edb;
   text-decoration: none;
+}
+
+
+.box2 h1{
+  padding-bottom: 20px;
+  
 }
 .box2 a:hover {
   text-decoration: underline;
@@ -166,12 +178,12 @@ header h1 {
 
 
 .box2 img {
-    padding-top: 20px;
+    overflow: hidden;
+    border-radius: 10px; 
     width: 90%;
     max-width: 1000px; 
     height: auto;
     display: block;
     margin: 0 auto;
-    border-radius: 10%; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
 }
