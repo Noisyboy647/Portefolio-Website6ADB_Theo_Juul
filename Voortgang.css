@@ -294,7 +294,7 @@ header h1 {
 
 .progress-bar1{
   height: 8px;
-  width: 100%;
+  width: 85%;
   background: #0078ff;
   border-radius: 5px;
 }
@@ -310,7 +310,7 @@ header h1 {
 
 .progress-bar3{
   height: 8px;
-  width: 100%;
+  width: 0%;
   background: #0078ff;
   border-radius: 5px;
 }

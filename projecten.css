@@ -170,18 +170,22 @@ header h1 {
    background: #22c55e;
    }
 
-.Loadingbar, .Loadingbar1, .Loadingbar2 {
+.Loadingbar, .Loadingbar1, .Loadingbar2 , .Loadingbar4 {
   height: 10px;
   border-radius: 20px;
   margin: 5px 0 15px;
 }
 .Loadingbar {
-   background: linear-gradient(to right, #3b82f6 100%, #e5e7eb 25%);
+   background: linear-gradient(to right, #3b82f6 85%, #e5e7eb 25%);
    }
 .Loadingbar1 { 
-  background: linear-gradient(to right, #3b82f6 100%, #e5e7eb 55%);
+  background: linear-gradient( #e5e7eb 55%);
  }
 .Loadingbar2 { 
+  background: linear-gradient(to right, #3b82f6 0%, #e5e7eb 0%);
+ }
+
+ .Loadingbar4 { 
   background: linear-gradient(to right, #3b82f6 100%, #e5e7eb 0%);
  }
 
