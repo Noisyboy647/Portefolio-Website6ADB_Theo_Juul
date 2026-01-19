@@ -176,13 +176,13 @@ header h1 {
   margin: 5px 0 15px;
 }
 .Loadingbar {
-   background: linear-gradient(to right, #3b82f6 85%, #e5e7eb 25%);
+   background: linear-gradient(to right, #3b82f6 100%, #e5e7eb 25%);
    }
 .Loadingbar1 { 
-  background: linear-gradient(to right, #3b82f6 75%, #e5e7eb 0%);
+  background: linear-gradient(to right, #3b82f6 100%, #e5e7eb 0%);
  }
 .Loadingbar2 { 
-  background: linear-gradient(to right, #3b82f6 85%, #e5e7eb 0%);
+  background: linear-gradient(to right, #3b82f6 100%, #e5e7eb 0%);
  }
 
  .Loadingbar4 { 
