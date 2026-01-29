@@ -170,7 +170,7 @@ header h1 {
    background: #22c55e;
    }
 
-.Loadingbar, .Loadingbar1, .Loadingbar2 , .Loadingbar4 , .Loadingbar6 {
+.Loadingbar, .Loadingbar1, .Loadingbar2 , .Loadingbar4 , .Loadingbar6, .Loadingbar7 {
   height: 10px;
   border-radius: 20px;
   margin: 5px 0 15px;
@@ -191,7 +191,11 @@ header h1 {
 
 
   .Loadingbar6 { 
-  background: linear-gradient(to right, #3b82f6 60%, #e5e7eb 0%);
+  background: linear-gradient(to right, #3b82f6 100%, #e5e7eb 0%);
+ }
+
+  .Loadingbar7 { 
+  background: linear-gradient(to right, #3b82f6 100%, #e5e7eb 0%);
  }
 
 .buttons, .buttons2 {
