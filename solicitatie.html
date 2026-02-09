@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>Subnet Invulformulier</title>
+<link rel="stylesheet" href="./stlye.css">
+
+<style>
+
+</style>
+</head>
+
+<body>
+
+
+    <div class="random">
+    <h2>Soliciteren voor dapple</h2>
+    <p>cv invullen alstublieft</p>
+    <br>
+    <div class="space-between">
+        <img src="./apple.png" alt="">
+        <a href="">Invulformulier</a>
+    </div>
+    </div>
+
+
+    <div class="page">
+    
+
+<form id="formulier">
+
+<table class="table">
+
+  <tr>
+    <td>
+      <label>Voornaam *</label>
+      <input type="text" id="voornaam" required minlength="2">
+    </td>
+
+    <td>
+      <label>Achternaam *</label>
+      <input type="text" id="achternaam" required minlength="2">
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <label>E-mail *</label>
+      <input type="email" id="email" required>
+    </td>
+
+    <td>
+      <label>Geboortedatum *</label>
+      <input type="date" id="geboorte" required>
+      <small id="leeftijd"></small>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <label>Afdeling</label>
+      <select id="afdeling">
+        <option>Sales</option>
+        <option>Aankoop</option>
+        <option>Technisch</option>
+      </select>
+    </td>
+
+    <td>
+      <label>Ervaring</label>
+      <select>
+        <option>0-1 jaar</option>
+        <option>1-3 jaar</option>
+        <option>3-5 jaar</option>
+        <option>5+ jaar</option>
+      </select>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <label>Beschikbaarheid</label><br>
+      <input type="radio" name="werk" value="voltijds"> Voltijds<br>
+      <input type="radio" name="werk" value="deeltijds"> Deeltijds<br>
+      <input type="radio" name="werk" value="freelance"> Freelance
+    </td>
+
+    <td>
+      <label>Startdatum</label>
+      <select>
+        <option>Onmiddellijk</option>
+        <option>Binnen 1 maand</option>
+        <option>Binnen 3 maanden</option>
+      </select>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <label>Vaardigheden</label><br>
+      <input type="checkbox"> HTML
+      <input type="checkbox"> CSS
+      <input type="checkbox"> JS<br>
+      <input type="checkbox"> Python
+      <input type="checkbox"> Netwerken
+    </td>
+
+    <td>
+      <label>Motivatie (max 500)</label>
+      <textarea id="motivatie" maxlength="500" rows="5"></textarea>
+      <small id="teller">0 / 500</small>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="2">
+      <input type="checkbox" id="gdpr" required>
+      Ik ga akkoord met GDPR *
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="2">
+      <button type="submit">Verzenden</button>
+    </td>
+  </tr>
+
+</table>
+
+</form>
+
+
+</div>
+
+
+
+</body>
+</html>
