@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>Sollicitatie ontvangen</title>
+<link rel="stylesheet" href="./email.css">
+</head>
+<body>
+
+<table class="wrapper" width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr>
+    <td align="center">
+
+      <div class="random">
+
+      </div>
+
+      <table class="container" width="600" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="content">
+            <h1>Bedankt, {{naam}}!</h1>
+            <p>
+              We hebben je sollicitatie voor de afdeling <strong>{{afdeling}}</strong> goed ontvangen.
+              Ons team zal deze zo snel mogelijk bekijken.
+            </p>
+
+            <table class="data-table" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td class="label">Afdeling</td>
+                <td>{{afdeling}}</td>
+              </tr>
+              <tr>
+                <td class="label">Ervaring</td>
+                <td>{{ervaring}}</td>
+              </tr>
+              <tr>
+                <td class="label">Beschikbaarheid</td>
+                <td>{{beschikbaarheid}}</td>
+              </tr>
+            </table>
+
+            {{#als_gewonnen}}
+            <table class="win" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td>Gefeliciteerd! Je hebt een prijs gewonnen in ons geluksspel!</td>
+              </tr>
+            </table>
+            {{/als_gewonnen}}
+
+            {{^als_gewonnen}}
+            <table class="lose" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td>Bedankt voor je deelname aan het geluksspel. Deze keer geen prijs, veel succes met je sollicitatie.</td>
+              </tr>
+            </table>
+            {{/als_gewonnen}}
+          </td>
+        </tr>
+
+        <tr>
+          <td class="footer">
+            <p>
+              Je ontvangt deze e-mail omdat je bij ons hebt gesolliciteerd.
+              Wij verwerken je gegevens conform de GDPR-richtlijnen.
+            </p>
+            <p>
+              Wil je je gegevens laten aanpassen of verwijderen?  
+              Neem contact op via  
+              <a href="mailto:privacy@bedrijf.be">privacy@bedrijf.be</a>
+            </p>
+          </td>
+        </tr>
+      </table>
+
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

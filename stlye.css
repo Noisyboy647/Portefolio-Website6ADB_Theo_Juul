@@ -19,6 +19,7 @@ body {
     padding: 40px 50px;
     justify-content: center;
     align-items: center;
+    margin-bottom: 60px;
 }
 
 a{
@@ -45,6 +46,13 @@ a{
     margin-bottom: 30px;
     color: white;
     background-color: #2f5fa8;
+    height: 350px; 
+    background-image: url("LOGOOO.png");
+    background-position: center center;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+
 }
 
 .random h2 {
@@ -95,3 +103,8 @@ input{
     border-radius: 5px;
 }
 
+.row{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}

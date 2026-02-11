@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Subnet Invulformulier</title>
 <link rel="stylesheet" href="./stlye.css">
+<script src="./main.js"></script>
 
 <style>
 
@@ -14,11 +15,10 @@
 
 
     <div class="random">
-    <h2>Soliciteren voor dapple</h2>
+    <h2>Soliciteren voor Theo Braem bedrijf</h2>
     <p>cv invullen alstublieft</p>
     <br>
     <div class="space-between">
-        <img src="./apple.png" alt="">
         <a href="">Invulformulier</a>
     </div>
     </div>
@@ -120,8 +120,9 @@
   </tr>
 
   <tr>
-    <td colspan="2">
-      <button type="submit">Verzenden</button>
+    <td class="row" colspan="2">
+      <button type="submit" onclick="ganaarpagina()">Verzenden</button>
+      <button type="button" onclick="speelGelukspel()">Speel gelukspel</button>
     </td>
   </tr>
 
@@ -130,6 +131,27 @@
 </form>
 
 
+</div>
+
+
+<div class="page">
+    <h1>Gelukspel</h1>
+    <p>Vul naam en geboortedatum en klok op speel gelukspel. Bij een geluksgetal van 8 of hoger wint u!</p>
+
+
+    
+    <div class="row">
+      <h1>Geluksgetal: </h1>
+      <h1 id="geluksgetal">...</h1>
+    </div>
+    
+    <div class="row">
+      <h1>Resultaat:</h1>
+      <h1 id="resultaat">...</h1>
+    </div>
+
+
+    
 </div>
 
 
