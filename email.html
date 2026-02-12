@@ -39,21 +39,9 @@
               </tr>
             </table>
 
-            {{#als_gewonnen}}
-            <table class="win" width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td>Gefeliciteerd! Je hebt een prijs gewonnen in ons geluksspel!</td>
-              </tr>
-            </table>
-            {{/als_gewonnen}}
-
-            {{^als_gewonnen}}
-            <table class="lose" width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td>Bedankt voor je deelname aan het geluksspel. Deze keer geen prijs, veel succes met je sollicitatie.</td>
-              </tr>
-            </table>
-            {{/als_gewonnen}}
+           <div class="resultaat-box">
+            {{resultaat_tekst}}
+          </div>
           </td>
         </tr>
 

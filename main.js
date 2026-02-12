@@ -6,8 +6,7 @@ var achternaam = document.getElementById('achternaam').value;
 var volledigeNaam = voornaam + achternaam;
 
 // 1. Tel het aantal letters in de volledige naam (zonder spaties)
-var aantalLetters = volledigeNaam.replace(/\\s/g, '').length;
-
+var aantalLetters = volledigeNaam.replace(/\s/g, '').length;
 
 // 2. Haal de geboortemaand op (1-12)
 var geboortedatum = document.getElementById('geboorte').value;
@@ -30,6 +29,10 @@ if (gewonnen) {
 }
 
 document.getElementById('geluksgetal').textContent = geluksGetal;
+
+document.getElementById("geluksgetal_input").value = geluksGetal;
+document.getElementById("resultaat_input").value = gewonnen ? "Gefeliciteerd! Je won!" : "Jammer, volgende keer!";
+
 }
 
 function ganaarpagina(){
