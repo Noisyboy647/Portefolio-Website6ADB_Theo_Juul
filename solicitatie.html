@@ -2,159 +2,142 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<title>Subnet Invulformulier</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sollicitatie - Theo Braem Bedrijf</title>
 <link rel="stylesheet" href="./stlye.css">
 <script src="./main.js"></script>
-
-<style>
-
-</style>
 </head>
 
 <body>
 
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>Sollicitatie - Theo Braem Bedrijf</title>
+<link rel="stylesheet" href="./stlye.css">
+<script src="./main.js"></script>
+</head>
 
-    <div class="random">
-    <h2>Soliciteren voor Theo Braem bedrijf</h2>
+<body>
+
+<div class="random">
+    <h2>Theo Braem Bedrijf</h2>
     <p>cv invullen alstublieft</p>
-    <br>
-    <div class="space-between">
-        <a href="">Invulformulier</a>
-    </div>
-    </div>
-
-
-    <div class="page">
-    
-
-<form id="formulier">
-
-<table class="table">
-
-  <tr>
-    <td>
-      <label>Voornaam *</label>
-      <input type="text" id="voornaam" required minlength="2">
-    </td>
-
-    <td>
-      <label>Achternaam *</label>
-      <input type="text" id="achternaam" required minlength="2">
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <label>E-mail *</label>
-      <input type="email" id="email" required>
-    </td>
-
-    <td>
-      <label>Geboortedatum *</label>
-      <input type="date" id="geboorte" required>
-      <small id="leeftijd"></small>
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <label>Afdeling</label>
-      <select id="afdeling">
-        <option>Sales</option>
-        <option>Aankoop</option>
-        <option>Technisch</option>
-      </select>
-    </td>
-
-    <td>
-      <label>Ervaring</label>
-      <select>
-        <option>0-1 jaar</option>
-        <option>1-3 jaar</option>
-        <option>3-5 jaar</option>
-        <option>5+ jaar</option>
-      </select>
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <label>Beschikbaarheid</label><br>
-      <input type="radio" name="werk" value="voltijds"> Voltijds<br>
-      <input type="radio" name="werk" value="deeltijds"> Deeltijds<br>
-      <input type="radio" name="werk" value="freelance"> Freelance
-    </td>
-
-    <td>
-      <label>Startdatum</label>
-      <select>
-        <option>Onmiddellijk</option>
-        <option>Binnen 1 maand</option>
-        <option>Binnen 3 maanden</option>
-      </select>
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <label>Vaardigheden</label><br>
-      <input type="checkbox"> HTML
-      <input type="checkbox"> CSS
-      <input type="checkbox"> JS<br>
-      <input type="checkbox"> Python
-      <input type="checkbox"> Netwerken
-    </td>
-
-    <td>
-      <label>Motivatie (max 500)</label>
-      <textarea id="motivatie" maxlength="500" rows="5"></textarea>
-      <small id="teller">0 / 500</small>
-    </td>
-  </tr>
-
-  <tr>
-    <td colspan="2">
-      <input type="checkbox" id="gdpr" required>
-      Ik ga akkoord met GDPR *
-    </td>
-  </tr>
-
-  <tr>
-    <td class="row" colspan="2">
-      <button type="submit" onclick="ganaarpagina()">Verzenden</button>
-      <button type="button" onclick="speelGelukspel()">Speel gelukspel</button>
-    </td>
-  </tr>
-
-</table>
-
-</form>
-
-
+    <a href="#formulier" class="banner-button">Formulier</a>
 </div>
 
+<div class="page" id="formulier">
+    <form id="formulier">
+        <table class="table">
+            <tr>
+                <td>
+                    <label>Voornaam *</label>
+                    <input type="text" id="voornaam" required minlength="2">
+                </td>
+                <td>
+                    <label>Achternaam *</label>
+                    <input type="text" id="achternaam" required minlength="2">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label>E-mail *</label>
+                    <input type="email" id="email" required>
+                </td>
+                <td>
+                    <label>Geboortedatum *</label>
+                    <input type="date" id="geboorte" required>
+                    <small id="leeftijd"></small>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label>Afdeling</label>
+                    <select id="afdeling">
+                        <option>Sales</option>
+                        <option>Aankoop</option>
+                        <option>Technisch</option>
+                    </select>
+                </td>
+                <td>
+                    <label>Ervaring</label>
+                    <select id="ervaring">
+                        <option>0-1 jaar</option>
+                        <option>1-3 jaar</option>
+                        <option>3-5 jaar</option>
+                        <option>5+ jaar</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label>Beschikbaarheid</label><br>
+                    Voltijds<input type="radio" name="werk" value="voltijds"> <br>
+                    Deeltijds<input type="radio" name="werk" value="deeltijds"> <br>
+                    Freelance<input type="radio" name="werk" value="freelance"> 
+                </td>
+                <td>
+                    <label>Startdatum</label>
+                    <select id="startdatum">
+                        <option>Onmiddellijk</option>
+                        <option>Binnen 1 maand</option>
+                        <option>Binnen 3 maanden</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col">
+                    <label>Vaardigheden</label><br>
+                    <input type="checkbox"> HTML
+                    <input type="checkbox"> CSS
+                    <input type="checkbox"> JS<br>
+                    <input type="checkbox"> Python
+                    <input type="checkbox"> Netwerken
+                </td>
+                <td>
+                    <label>Motivatie (max 500)</label>
+                    <textarea id="motivatie" maxlength="500" rows="5"></textarea>
+                    <small id="teller">0 / 500</small>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <input type="checkbox" id="gdpr" required>
+                    Ik ga akkoord met GDPR *
+                </td>
+            </tr>
+
+            <tr>
+                <td class="row" colspan="2" style="text-align: center; padding-top: 15px;">
+                    <button type="submit" onclick="ganaarpagina()">Verzenden</button>
+                    <button type="button" onclick="speelGelukspel()">Speel gelukspel</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
 
 <div class="page">
     <h1>Gelukspel</h1>
-    <p>Vul naam en geboortedatum en klok op speel gelukspel. Bij een geluksgetal van 8 of hoger wint u!</p>
-
-
-    
+    <p>Vul naam en geboortedatum en klik op speel gelukspel. Bij een geluksgetal van 8 of hoger wint u!</p>
     <div class="row">
-      <h1>Geluksgetal: </h1>
-      <h1 id="geluksgetal">...</h1>
+        <h1>Geluksgetal: </h1>
+        <h1 id="geluksgetal">...</h1>
     </div>
-    
     <div class="row">
-      <h1>Resultaat:</h1>
-      <h1 id="resultaat">...</h1>
+        <h1>Resultaat:</h1>
+        <h1 id="resultaat">...</h1>
     </div>
-
-
-    
 </div>
 
-
+</body>
+</html>
 
 </body>
 </html>
