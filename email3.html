@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0f172a;
+        }
+
+        .email-body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #e2e8f0;
+            max-width: 600px;
+            margin: 0 auto;
+            background: #0f172a;
+        }
+
+        .header {
+            background: linear-gradient(to bottom, #581c87, #0f172a);
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .logo {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            color: #ffffff;
+        }
+
+        .header p {
+            margin: 5px 0 0 0;
+            color: #cbd5e1;
+        }
+
+        .content {
+            padding: 30px;
+            background: #111827;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .content h2 {
+            color: #ffffff;
+            margin-top: 0;
+        }
+
+        .ticket-box {
+            background: rgba(34, 197, 94, 0.08);
+            border: 2px dashed #22c55e;
+            padding: 25px;
+            text-align: center;
+            margin: 25px 0;
+            border-radius: 12px;
+        }
+
+        .ticket-number {
+            font-size: 26px;
+            font-weight: bold;
+            color: #22c55e;
+            margin-top: 10px;
+        }
+
+        .content ul {
+            padding-left: 20px;
+        }
+
+        .content li {
+            margin-bottom: 8px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #334155;
+            margin: 30px 0;
+        }
+
+        .btn {
+            background: #7c3aed;
+            color: white;
+            padding: 14px 28px;
+            text-decoration: none;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .footer {
+            font-size: 12px;
+            color: #94a3b8;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #cbd5e1;
+        }
+
+         img{
+            border-radius: 50%;
+        }
+    </style>
+    <link rel="stylesheet" href="email.css">
+</head>
+
+<body>
+    <div class="email-body">
+
+        <div class="header">
+            <img src="http://adbtheo1707be.webhosting.be/TechConn.png" alt="TechCon Logo" class="logo">
+            <h1>TechCon 2026</h1>
+            <p>Bevestiging Inschrijving</p>
+        </div>
+
+        <div class="content">
+
+             <h2>Bedankt voor je bestelling bij TechCon meneer/mevrouw!</h2>
+            <p>Beste tech-enthousiasteling, je plek op hét tech-event van het jaar is verzekerd.</p>
+
+            <div class="ticket-box">
+                <p>Jouw unieke ticketnummer:</p>
+                <div class="ticket-number">{{ticketnummer}}</div>
+            </div>
+
+            <h3>Jouw Details:</h3>
+            <ul>
+                <li><strong>Naam:</strong> {{naam}}</li>
+                <li><strong>Email:</strong> {{email}}</li>
+                <li><strong>Telefoon:</strong> {{telefoon}}</li>
+                <li><strong>Tickettype:</strong> {{ticket_type}}</li>
+                <li><strong>Workshops:</strong> {{workshops}}</li>
+                <li><strong>Totaal betaald:</strong> € {{totaalprijs}}</li>
+            </ul>
+
+            <hr>
+
+            <h3>Praktische Informatie:</h3>
+            <p>
+                <strong>Datum:</strong> 15-17 Oktober 2026<br>
+                <strong>Locatie:</strong> Brussels Expo, België<br>
+                <strong>Programma:</strong> De deuren openen om 08:30u.
+            </p>
+
+            <p style="text-align: center; margin-top: 30px;">
+                <a href="https://techcon2026.com/my-ticket" class="btn">
+                    Bekijk je account
+                </a>
+            </p>
+
+        </div>
+
+        <div class="footer">
+            <p>Je ontvangt deze mail omdat je je hebt ingeschreven voor TechCon 2026.</p>
+            <p>Privacy: Wil je je gegevens laten verwijderen? Neem contact op via privacy@techcon.be.</p>
+            <p>&copy; 2026 TechCon Organization</p>
+        </div>
+
+    </div>
+</body>
+</html>

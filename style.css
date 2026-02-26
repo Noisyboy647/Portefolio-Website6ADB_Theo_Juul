@@ -1,0 +1,365 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    scroll-behavior: smooth;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+.reserveer{
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: purple;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.hero-sectie{
+    scroll-behavior: smooth;
+    background-color: rgb(55, 12, 55);
+    color: #e0e0ff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.box{
+    background-color: purple;
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 40%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    border-radius: 10px;
+    gap: 20px;
+}
+
+details {
+    background: purple;
+    color: yellow;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+summary {
+   
+    width: 300px;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px;
+    background: purple;
+    color: yellow;
+    border-radius: 6px;
+}
+
+details p {
+    padding: 10px;
+}
+
+
+.box img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+
+.extra{
+    width: 100%;
+}
+
+.prijs{
+    display: flex;
+    flex-direction: row;
+}
+
+
+footer{
+    margin-top: 100px;
+    background-color: black;
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sprekers{
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+
+img{
+    border-radius: 50%;
+}
+
+.gdpr{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 10px;
+}
+
+.gdpr input{
+    width: 20px;
+    height: 20px;
+}
+
+
+form{
+    background-color: black;
+    color: purple;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 30%;
+    height: 70%;
+    padding: 30px;
+    justify-content: flex-start;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 10px;
+}
+
+.naam , .email  {
+    height: 50px;
+    font-size: 20px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.telefoon{
+    height: 75px;
+    font-size: 20px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+
+textarea{
+    height: 50px;
+    font-size: 20px;
+    border-radius: 10px;
+    width: 100%;
+    height: 30%;
+}
+
+.btn{
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: purple;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+}
+
+.row{
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    width: 100%;
+}
+
+.row1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-direction: row;
+    width: 100%;
+}
+
+
+.text{
+    width: 100%;
+    border-radius: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.select{
+    display: flex;  
+    flex-direction: column;
+    border-radius: 10px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+select{
+    height: 50px;
+    font-size: 20px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+
+.diff1 , .diff2 , .diff3{
+    font-size: 10px;
+    background-color: white;
+    border: 1px solid black;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex start;
+    font-size: 20px;
+}
+
+
+
+.radio{
+    display: flex;
+    width: 100%;
+    height: 200px;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.diff{
+    width: 20px;
+    height: 20px;
+}
+
+
+.tickettype , .dieet , .workshop{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 20px;
+}
+
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;;
+    height: 150px;
+    width: 100%;
+}
+
+
+
+
+.workshop1 , .workshop2 , .workshop3 , .workshop4{
+    padding-left: 3px;
+    background-color: white;
+    border: 1px solid black;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex start;
+    font-size: 20px;
+}
+
+
+
+.ticket-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ticket-container label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+#ticketCountDisplay {
+    font-weight: bold;
+    color: #2563eb; 
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 20px;
+}
+
+#ticketRange {
+    width: 100%;
+    height: 40px;
+    background: #d1d5db transparent;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+.column{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.promo-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.promo {
+    display: flex;
+}
+
+.promo input {
+    flex: 1;
+    padding: 8px;
+}
+
+.promo button {
+    padding: 8px;
+}
+
+#promoFeedback {
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.success {
+    color: green;
+}
+
+.error {
+    color: red;
+}
+
+.timer{
+    font-size: 30px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: yellow;
+}

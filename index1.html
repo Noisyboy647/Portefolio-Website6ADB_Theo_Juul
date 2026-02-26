@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./webhook.js"></script>
+</head>
+<body>
+
+    <div class="hero-sectie">
+        <img src="./TechConn.png" alt="">
+        <h1>TechCon</h1>
+        <h3>Nu beschikbaar in kasteeldreef beveren</h3>
+        <a class="reserveer" href="#reserveer">Reserveer nu!</a>
+        <div class="timer">
+            <h1 id="countdown"></h1>
+        </div>
+    </div>
+
+
+
+    <div class="sprekers">
+
+        <div class="box">
+            <img src="./TechConn.png" alt="">
+            <h2>Theo Braem</h2>
+            <p>Host van TechCon , beheert over alle technische activiteiten</p>
+        </div>
+
+        <div class="box">
+            <img src="./vrouw.jpg" alt="">
+            <h2>Jane Smith</h2>
+            <p>Technisch beheerder van TechCon, zorgt voor de technische ondersteuning tijdens het evenement.</p>
+        </div>
+
+
+        <div class="box">
+            <img src="./images (6).jpg" alt="">
+            <h2>Michael Johnson</h2>
+            <p>Marketing manager van TechCon, beheert de communicatie en marketing van het evenement.</p>
+        </div>
+    </div>
+
+
+   
+    <form id="reserveer" action="">
+        <h1>Ticket form</h1>
+        <div class="row">
+            <input class="naam" type="text" name="name" id="name" placeholder="Geef jouw naam">
+            <input class="email" type="email" name="email" id="email" placeholder="Geef jouw email">
+        </div>
+        
+        
+        <input class="telefoon" type="tel" name="telefoon" id="telefoon" placeholder="Geef jouw telefoonnummer">
+        
+
+        <div class="select">
+            <label class="dieet" for="dieet"><h3><strong>dieet:</strong></h3></label>
+            <select name="dieet" id="dieet">
+                <option value="geen">Geen</option>
+                <option value="vegetarisch">Vegetarisch</option>
+                <option value="vegan">Vegan</option>
+                <option value="gluten-vrij">Gluten vrij</option>
+                <option value="halal">halal</option>
+            </select>
+        </div>
+
+
+        <label class="tickettype" for="tickettype"><h3><strong>Ticket type:</strong></h3></label>
+        <div class="radio">
+            <label class="diff1" for="">
+            <input class="diff" type="radio" name="tickettype" value="1199" id="earlybird"> Early Bird $1199
+            </label>
+
+            <label class="diff2" for="">
+            <input class="diff" type="radio" name="tickettype" value="2099" id="standaard"> Standaard $2099
+            </label>
+
+
+            <label class="diff3" for="">
+            <input class="diff" type="radio" name="tickettype" value="3199" id="vip"> VIP $3199
+            </label>
+
+            
+        </div>
+
+        <div class="extra" id="vipOptions" style="display: none;">
+                <label for="shirtSize"><h3><strong>T-shirt maat:</strong></h3></label>
+                <select id="shirtSize">
+                    <option value="">Kies je maat</option>
+                    <option value="S">Small</option>
+                    <option value="M">Medium</option>
+                    <option value="L">Large</option>
+                    <option value="XL">XL</option>
+                </select>
+        </div>
+
+        <label class="workshop" for="workshop"><h3><strong>Workshop:</strong></h3></label>
+        <div class="grid">
+            <label class="workshop1" for=""><input type="checkbox" name="workshop" id="workshop1"> AI ethics</label>
+            <label class="workshop2" for=""><input type="checkbox" name="workshop" id="workshop2"> Quantum computing</label>
+            <label class="workshop3" for=""><input type="checkbox" name="workshop" id="workshop3"> Cloud native</label>
+            <label class="workshop4" for=""><input type="checkbox" name="workshop" id="workshop4"> Cybersecurity</label>
+
+        </div>
+
+        <div class="ticket-container">
+            <label>
+                Aantal tickets: 
+                <span id="ticketCountDisplay">1</span>
+            </label>
+
+            <input class="balk" type="range" id="ticketRange" min="1" max="5" value="1">
+        </div>
+
+        <div class="promo-container">
+            <label for="promoCode">Kortingscode</label>
+            <div class="promo">
+                <input type="text" id="promoCode">
+                <button type="button" id="checkPromo">Check</button>
+            </div>
+            <p id="promoFeedback"></p>
+        </div>
+
+
+        <div class="gdpr">         
+        <input type="checkbox" name="gdpr" id="gdpr">
+        <label for="gdpr"><h1>Ik ga akkoord met de GDPR terms</h1></label>
+        </div>
+
+
+       <div class="prijs">
+            <h1>Totale prijs: €<span id="totalPrice">0</span></h1>
+            <p id="discountLabel" style="color:green;"></p>
+        </div>
+
+
+        <button type="submit" class="btn">Submit</button>
+
+
+    </form>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <label for=""><h1><strong>Veelgestelde vragen</strong></h1></label>
+    <div class="row1">
+    
+   <div class="faq-item">
+        <details>
+            <summary>Wat kost een ticket?</summary>
+            <p><strong>Tickets starten vanaf €49.</strong></p>
+        </details>
+    </div>
+
+    <div class="faq-item">
+        <details>
+            <summary>Is er parking?</summary>
+            <p><strong>Ja, er is gratis parking beschikbaar.</strong></p>
+        </details>
+    </div>
+    </div>
+
+    <footer>
+        <strong>
+            <p>&copy; 2026 TechCon. Alle rechten zijn gereserveerd.</p>
+            <p>enig probleem? bel <a href="tel:0612345678">06 12345678</a></p>
+        </footer>
+        </strong>
+
+    <script src="javascript.js"></script>
+    <script src="webhook.js"></script>
+    
+</body>
+</html>
+
