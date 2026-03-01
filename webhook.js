@@ -1,6 +1,9 @@
 (function () {
   'use strict';
 
+
+
+  
   const WEBHOOK_URL = 'https://hook.eu2.make.com/6z2784p5acwo4tfc4npo1panjxekj377';
   const form = document.getElementById('reserveer');
   if (!form) return;
@@ -8,7 +11,6 @@
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
 
-    // Basis validatie
     const naamInput = document.getElementById('name').value.trim();
     const emailInput = document.getElementById('email').value.trim();
     const gdpr = document.getElementById('gdpr').checked;
@@ -23,39 +25,46 @@
       return;
     }
 
-    // 🔥 Ticketnummer genereren
+    
     const naamDeel = naamInput.substring(0, 3).toUpperCase();
     const tijdDeel = Date.now().toString().slice(-4);
     const randomDeel = Math.floor(1000 + Math.random() * 9000);
     const ticketNr = `${naamDeel}${tijdDeel}${randomDeel}`;
 
-    // Ticket type ophalen
+    
     const selectedTicket = document.querySelector('input[name="tickettype"]:checked');
     if (!selectedTicket) {
       alert("Selecteer een ticket type.");
       return;
     }
 
-    // Ticket naam bepalen op basis van ID
+   
     let ticketNaam = "";
     if (selectedTicket.id === "earlybird") ticketNaam = "Early Bird";
     if (selectedTicket.id === "standaard") ticketNaam = "Standaard";
     if (selectedTicket.id === "vip") ticketNaam = "VIP";
 
-    // Workshops verzamelen
+    
     const workshops = [];
     document.querySelectorAll('input[name="workshop"]:checked').forEach(cb => {
       workshops.push(cb.parentElement.innerText.trim());
     });
 
-    // T-shirt maat (alleen VIP)
+   
     const tshirt = document.getElementById('shirtSize')?.value || "";
 
-    // Totaalprijs correct uitlezen
+  
     const totaalprijs = document.getElementById('totalPrice').innerText.replace("€", "").trim();
 
-    // Data object (ALLES)
-    const data = {
+    let vip_message = "";
+
+    if (selectedTicket.id === "vip") {
+      vip_message = "Je bent een VIP, welkom en geniet van extra voordelen!";
+    }
+
+
+
+      const data = {
       ticketnummer: ticketNr,
       naam: naamInput,
       email: emailInput,
@@ -67,7 +76,9 @@
       workshops: workshops.join(', '),
       tshirt_maat: tshirt,
       kortingscode: document.getElementById('promoCode')?.value || '',
-      totaalprijs: totaalprijs
+      totaalprijs: totaalprijs,
+      vip_message: vip_message,
+      gdpr_akkoord: gdpr
     };
 
     try {
