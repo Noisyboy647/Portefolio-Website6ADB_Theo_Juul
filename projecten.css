@@ -170,7 +170,9 @@ header h1 {
    background: #22c55e;
    }
 
-.Loadingbar, .Loadingbar1, .Loadingbar2 , .Loadingbar4 , .Loadingbar6, .Loadingbar7 {
+.Loadingbar, .Loadingbar1, .Loadingbar2 , .Loadingbar4 , .Loadingbar6, .Loadingbar7 , .Loadingbar8 , .Loadingbar9 , .Loadingbar10 , .Loadingbar11 {
+   width: 100%;
+   background: #e5e7eb;
   height: 10px;
   border-radius: 20px;
   margin: 5px 0 15px;
@@ -197,6 +199,26 @@ header h1 {
   .Loadingbar7 { 
   background: linear-gradient(to right, #3b82f6 100%, #e5e7eb 0%);
  }
+
+
+ .Loadingbar8 { 
+  background: linear-gradient(to right, #3b82f6 25%, #e5e7eb 0%);
+ }
+
+
+ .Loadingbar9 { 
+  background: linear-gradient(to right, #3b82f6 30%, #e5e7eb 0%);
+ }
+
+
+ .Loadingbar10 { 
+  background: linear-gradient(to right, #3b82f6 50%, #e5e7eb 0%);
+ }
+
+.Loadingbar10 { 
+  background: linear-gradient(to right, #3b82f6 0%, #e5e7eb 0%);
+ }
+
 
 .buttons, .buttons2 {
   background: #f1f1f1;

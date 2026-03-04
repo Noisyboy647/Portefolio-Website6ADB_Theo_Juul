@@ -316,6 +316,39 @@ header h1 {
 }
 
 
+
+.progress-bar4{
+  height: 8px;
+  width: 100%;
+  background: #0078ff;
+  border-radius: 5px;
+}
+
+
+.progress-bar5{
+  height: 8px;
+  width: 30%;
+  background: #0078ff;
+  border-radius: 5px;
+}
+
+
+.progress-bar6{
+  height: 8px;
+  width: 50%;
+  background: #0078ff;
+  border-radius: 5px;
+}
+
+
+.progress-bar7{
+  height: 8px;
+  width: 0%;
+  background: #0078ff;
+  border-radius: 5px;
+}
+
+
 .percent {
   font-weight: bold;
   color: #0078ff;
