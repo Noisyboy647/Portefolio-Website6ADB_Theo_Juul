@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Flyer Redesigner</title>
+    <link rel="stylesheet" href="./style3.css">
+</head>
+<body>
+
+    <header>
+        <h1>AI Flyer Redesigner</h1>
+        <p>Geef je oude flyer een nieuwe look met de kracht van AI</p>
+    </header>
+
+    <main class="container">
+        <section class="card form-section">
+            <form id="foto-formulier">
+                
+                <label for="foto">Upload je flyer:</label>
+                <input type="file" id="foto" name="foto" accept="image/*" required>
+                <div id="preview-container"></div>
+
+                <div class="grid-inputs">
+                    <div>
+                        <label>Kies actie:</label>
+                        <select name="actie" required>
+                            <option value="vertaal_engels">Vertaal naar Engels</option>
+                            <option value="vertaal_frans">Vertaal naar Frans</option>
+                            <option value="moderniseer">Moderniseer tekst</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label>Kies stijl:</label>
+                        <select name="stijl" required>
+                            <option value="fotorealistisch">Fotorealistisch</option>
+                            <option value="infographics">Infographics</option>
+                            <option value="minimalistisch">Minimalistisch</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label class="checkbox-container">
+                    <input type="checkbox" required>
+                    <span>Ik ga akkoord met de verwerking via AI-diensten.</span>
+                </label>
+
+                <button type="submit" id="submitBtn">Genereer nieuwe flyer</button>
+            </form>
+        </section>
+
+        <section id="laden" class="card">
+            <div class="spinner"></div>
+            <p>De AI analyseert en ontwerpt je flyer... <br><small>Dit kan 15-30 seconden duren.</small></p>
+        </section>
+
+        <section id="resultaat" class="card">
+            <h2>🎉 Je nieuwe flyer is klaar!</h2>
+            <img id="flyerAfbeelding" src="" alt="Gegenereerde flyer">
+            <br>
+            <a id="downloadBtn" href="#" download="nieuwe-flyer.png" class="button secondary">Download Afbeelding</a>
+            <button onclick="location.reload()" class="button link">Nog een maken</button>
+        </section>
+    </main>
+
+    <script src="./main3.js"></script>
+</body>
+</html>
