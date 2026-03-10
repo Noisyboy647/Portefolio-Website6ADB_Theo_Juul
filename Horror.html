@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Horror Maze - Kildra's Limbo</title>
+    <style>
+        body { margin: 0; overflow: hidden; background: #000; font-family: 'Courier New', Courier, monospace; }
+        #overlay { position: absolute; width: 100%; height: 100%; background: #000; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 2000; }
+        #start-btn { padding: 15px 40px; font-size: 22px; cursor: pointer; background: #fff; color: #000; border: none; font-weight: bold; }
+        #dialogue-container { position: absolute; bottom: 10%; left: 50%; transform: translateX(-50%); width: 80%; max-width: 600px; background: rgba(0,0,0,0.85); border: 2px solid #555; padding: 20px; color: #fff; display: none; z-index: 1500; cursor: pointer; user-select: none; }
+        #dialogue-name { font-weight: bold; color: #ff3333; margin-bottom: 5px; text-transform: uppercase; }
+        #dialogue-text { font-size: 18px; line-height: 1.4; min-height: 4em; }
+        #hud { position: absolute; top: 20px; left: 20px; color: #fff; background: rgba(0,0,0,0.8); padding: 15px; border: 1px solid #fff; z-index: 100; display: none; }
+        #ammo-ui { position: absolute; bottom: 20px; left: 20px; color: #fff; font-size: 24px; font-weight: bold; z-index: 100; display: none; }
+        #crosshair { position: absolute; top: 50%; left: 50%; width: 10px; height: 10px; border: 2px solid white; border-radius: 50%; transform: translate(-50%, -50%); pointer-events: none; display: none; }
+        .bar-container { display: flex; align-items: center; margin-top: 5px; }
+        .bar-label { width: 30px; font-size: 12px; font-weight: bold; }
+        .bar { width: 120px; height: 10px; background: #222; border: 1px solid #fff; margin-left: 5px; }
+        #hp-fill { width: 100%; height: 100%; background: #ff0000; transition: width 0.2s; }
+        #stamina-fill { width: 100%; height: 100%; background: #0077ff; }
+        #battery-fill { width: 100%; height: 100%; background: #fff; }
+        
+        #boss-ui { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 400px; display: none; text-align: center; color: red; font-weight: bold; font-size: 24px; z-index: 100; letter-spacing: 2px; }
+        #boss-bar-bg { width: 100%; height: 20px; background: #333; border: 2px solid red; margin-top: 5px; }
+        #boss-bar-fill { width: 100%; height: 100%; background: red; transition: width 0.2s; }
+        #boss-timer { font-size: 32px; color: orange; margin-top: 10px; text-shadow: 0 0 10px orange; }
+
+        #warning-text { position: absolute; top: 30%; left: 50%; transform: translateX(-50%); font-size: 40px; color: yellow; font-weight: bold; display: none; z-index: 1000; text-shadow: 0 0 20px red, 0 0 10px red; text-align: center; pointer-events: none; }
+
+        #map-ui {
+            position: absolute; bottom: 20px; right: 20px; width: 200px; height: 200px;
+            border: 2px solid #fff; border-radius: 50%; background: rgba(0,0,0,0.9);
+            overflow: hidden; z-index: 500; transition: 0.3s; display: none;
+        }
+        #map-ui.big { width: 80vw; height: 80vh; bottom: 10vh; right: 10vw; border-radius: 10px; border: 3px solid #f00; }
+        #map-rotator { position: absolute; width: 100%; height: 100%; transform-origin: center center; }
+        #player-dot { position: absolute; top: 50%; left: 50%; width: 12px; height: 12px; background: #fff; border-radius: 50%; transform: translate(-50%, -50%); z-index: 600; }
+        .wall-dot { position: absolute; background: #555; width: 8px; height: 8px; }
+        .item-dot { position: absolute; background: #0ff; width: 10px; height: 10px; border-radius: 50%; }
+        .enemy-dot { position: absolute; background: #f00; width: 10px; height: 10px; border-radius: 50%; box-shadow: 0 0 10px red; }
+        .gate-dot { position: absolute; background: orange; width: 18px; height: 18px; }
+        .gun-dot { position: absolute; background: yellow; width: 12px; height: 12px; border-radius: 50%; box-shadow: 0 0 15px yellow; z-index: 550; display: none; }
+    </style>
+</head>
+<body>
+
+    <div id="overlay"><h1>MONSTER PROTOCOL</h1><button id="start-btn">INITIALISEER GEEST</button></div>
+    <div id="crosshair"></div>
+    <div id="ammo-ui">MAG: <span id="bullets">30</span>/30</div>
+    <div id="warning-text">LAVA STIJGT!<br>ZOEK DE HIGH GROUND!</div>
+    
+    <div id="boss-ui">
+        KILDRA
+        <div id="boss-bar-bg"><div id="boss-bar-fill"></div></div>
+        <div id="boss-timer">02:00</div>
+    </div>
+
+    <div id="dialogue-container">
+        <div id="dialogue-name">Daniel</div>
+        <div id="dialogue-text">...</div>
+        <div style="font-size:10px; color:#888; text-align:right; margin-top:10px;">KLIK OM VERDER TE GAAN</div>
+    </div>
+
+    <div id="hud">
+        ZIELEN: <span id="count">0</span>/4
+        <div class="bar-container"><span class="bar-label">HP</span><div class="bar"><div id="hp-fill"></div></div></div>
+        <div class="bar-container"><span class="bar-label">STM</span><div class="bar"><div id="stamina-fill"></div></div></div>
+        <div class="bar-container"><span class="bar-label">BAT</span><div class="bar"><div id="battery-fill"></div></div></div>
+        <span id="mission-text" style="color:#0ff; font-weight:bold; display:block; margin-top:5px;">DOEL: VIND DE 4 ZIELEN</span>
+    </div>
+
+    <div id="map-ui">
+        <div id="map-rotator"></div>
+        <div id="player-dot"></div>
+    </div>
+
+    <script type="importmap">{ "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js", "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/" } }</script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
+        import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+        let hasGun = false, ammo = 30, isReloading = false;
+        let isShooting = false, fireRateTimer = 0; 
+        let gunRecoil = 0; 
+        let dungeonSpawned = false; 
+        
+        let bossTimeLeft = 120; 
+        let bossTimerActive = false;
+
+        let playerBaseY = 1.7;
+        let velocityY = 0;
+        let screenShake = 0;
+
+        let monsterSpeed = 0.04;
+        let throwInaccuracy = 0.3;
+        let bossAttackTimer = 0;
+        const spikesArray = [];
+        
+        // Lava & Boss Platform Variables
+        let lavaPlane;
+        let lavaPhase = 0; // 0=uit, 0.5=waarschuwing, 1=stijgt, 2=blijft, 3=zakt
+        let lavaTimer = 0;
+        let lavaWarningTimer = 0;
+        const safePlatforms = [];
+        let bossPlatform = null; // NIEUW: Platform voor Kildra
+
+        let monsterStunned = false, monsterDead = false, monsterHp = 25, maxMonsterHp = 25; 
+        let keys = {}, battery = 100, stamina = 100, playerHp = 100, found = 0, lightOn = true, bigMap = false;
+        let stepTimer = 0;
+        let mixer; 
+        const clock = new THREE.Clock();
+        
+        const stones = [];
+        const stoneGeo = new THREE.DodecahedronGeometry(0.5);
+        const stoneMat = new THREE.MeshStandardMaterial({color: 0x555555, roughness: 0.8});
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const sfx = {
+            walk: new Audio('audiofile/walking.mp3'),
+            run: new Audio('audiofile/running.mp3'),
+            soul: new Audio('audiofile/soul.mp3'),
+            shot: new Audio('audiofile/gunshot.mp3'),
+            reload: new Audio('audiofile/reload.mp3'),
+            fall: new Audio('audiofile/fall.mp3'),
+            danielTalk: new Audio('audiofile/bleep020.ogg'),
+            soulTalk: new Audio('audiofile/bleep030.ogg')
+        };
+        sfx.walk.volume = 0.3; sfx.run.volume = 0.3; sfx.soul.volume = 0.6;
+        sfx.danielTalk.volume = 0.3; sfx.soulTalk.volume = 0.3;
+
+        const gunPickup = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.2, 0.8), new THREE.MeshStandardMaterial({color: 0x222222}));
+        gunPickup.visible = false;
+        scene.add(gunPickup);
+
+        const gunLight = new THREE.PointLight(0xffff00, 15, 5);
+        gunLight.visible = false;
+        scene.add(gunLight);
+
+        const gunInHand = new THREE.Group();
+        const barrel = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.08, 0.7), new THREE.MeshStandardMaterial({color: 0x111111}));
+        const mag = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.2, 0.15), new THREE.MeshStandardMaterial({color: 0x222222}));
+        mag.position.set(0, -0.1, 0.1);
+        gunInHand.add(barrel);
+        gunInHand.add(mag);
+        gunInHand.position.set(0.3, -0.2, -0.5); 
+        gunInHand.visible = false;
+        camera.add(gunInHand);
+
+        const monster = new THREE.Group();
+        scene.add(monster);
+
+        const loader = new GLTFLoader();
+        loader.load('monster/rando1.glb', (gltf) => {
+            const model = gltf.scene;
+            model.scale.set(1.5, 1.5, 1.5); 
+            model.position.y = 0; 
+            monster.add(model);
+            if (gltf.animations && gltf.animations.length > 0) {
+                mixer = new THREE.AnimationMixer(model);
+                const action = mixer.clipAction(gltf.animations[0]);
+                action.play();
+            }
+        });
+
+        const eyeL = new THREE.Mesh(new THREE.BoxGeometry(0.8, 2.0, 0.8), new THREE.MeshBasicMaterial({color: 0xff0000, transparent: true, opacity: 0}));
+        eyeL.position.y = 1; 
+        monster.add(eyeL);
+
+        scene.add(new THREE.AmbientLight(0xffffff, 0.5)); 
+        const flashlight = new THREE.SpotLight(0xffffff, 800, 60, Math.PI/12, 0.1, 0.5);
+        camera.add(flashlight); flashlight.target.position.set(0, 0, -5); camera.add(flashlight.target); scene.add(camera);
+        
+        const floor = new THREE.Mesh(new THREE.PlaneGeometry(120, 120), new THREE.MeshStandardMaterial({color: 0x111111}));
+        floor.rotation.x = -Math.PI/2; scene.add(floor);
+
+        const lavaGeo = new THREE.PlaneGeometry(120, 120);
+        const lavaMat = new THREE.MeshBasicMaterial({color: 0xff3300, transparent: true, opacity: 0.9});
+        lavaPlane = new THREE.Mesh(lavaGeo, lavaMat);
+        lavaPlane.rotation.x = -Math.PI / 2;
+        lavaPlane.position.y = -2;
+        scene.add(lavaPlane);
+
+        const walls = [];
+        const mazeMeshes = []; 
+        const mapRot = document.getElementById('map-rotator');
+        
+        const gunMapDot = document.createElement('div');
+        gunMapDot.className = 'gun-dot';
+        mapRot.appendChild(gunMapDot);
+        
+        const gateDot = document.createElement('div'); gateDot.className='gate-dot'; mapRot.appendChild(gateDot);
+        let gate;
+
+        const mazeLayout = [
+            "111111121111111",
+            "100000000000001",
+            "101111111111101",
+            "101000000000101",
+            "101011101110101",
+            "100010000010001",
+            "111010111010111",
+            "100000101000001",
+            "101111101111101",
+            "100000000000001",
+            "111111101111111",
+            "100000000000001",
+            "101111101111101",
+            "100000000000001",
+            "111111111111111"
+        ];
+
+        const cellSize = 5;
+        const offset = Math.floor(mazeLayout.length / 2) * cellSize;
+        const emptySpots = [];
+
+        for(let z = 0; z < mazeLayout.length; z++) {
+            for(let x = 0; x < mazeLayout[z].length; x++) {
+                const px = (x * cellSize) - offset;
+                const pz = (z * cellSize) - offset;
+                const char = mazeLayout[z][x];
+
+                if (char === '1') {
+                    const mesh = new THREE.Mesh(new THREE.BoxGeometry(cellSize, 8, cellSize), new THREE.MeshStandardMaterial({color: 0x0f2912}));
+                    mesh.position.set(px, 4, pz); scene.add(mesh);
+                    walls.push(new THREE.Box3().setFromObject(mesh));
+                    mazeMeshes.push(mesh); 
+                    
+                    const dot = document.createElement('div'); dot.className = 'wall-dot'; 
+                    dot.style.width = (cellSize*3)+'px'; dot.style.height = (cellSize*3)+'px';
+                    mapRot.appendChild(dot); mesh.userData.icon = dot;
+                } else if (char === '2') {
+                    gate = new THREE.Mesh(new THREE.BoxGeometry(10, 8, 2), new THREE.MeshStandardMaterial({color: 0x440000}));
+                    gate.position.set(px, 4, pz); scene.add(gate);
+                } else if (char === '0') {
+                    emptySpots.push({x: px, z: pz});
+                }
+            }
+        }
+
+        emptySpots.sort(() => Math.random() - 0.5);
+
+        const items = [];
+        for(let i=0; i<4; i++) {
+            const m = new THREE.Mesh(new THREE.SphereGeometry(0.8), new THREE.MeshBasicMaterial({color: 0x00ffff}));
+            m.position.set(emptySpots[i].x, 1, emptySpots[i].z); scene.add(m);
+            const dot = document.createElement('div'); dot.className = 'item-dot'; mapRot.appendChild(dot);
+            items.push({mesh: m, dot});
+        }
+
+        camera.position.set(emptySpots[4].x, 1.7, emptySpots[4].z);
+        monster.position.set(emptySpots[5].x, 0, emptySpots[5].z);
+        const gunSpawnSpot = {x: 0, z: 0}; 
+
+        function createArenaWall(x, z, w, d) {
+            const mesh = new THREE.Mesh(new THREE.BoxGeometry(w, 20, d), new THREE.MeshStandardMaterial({color: 0x1a1a1a}));
+            mesh.position.set(x, 10, z); scene.add(mesh);
+            walls.push(new THREE.Box3().setFromObject(mesh));
+            
+            const dot = document.createElement('div'); dot.className = 'wall-dot'; 
+            dot.style.width = (w*3)+'px'; dot.style.height = (d*3)+'px';
+            dot.style.background = '#880000'; 
+            mapRot.appendChild(dot); mesh.userData.icon = dot;
+        }
+
+        function shoot() {
+            if(!hasGun || ammo <= 0 || isReloading || !controls.isLocked) return;
+            ammo--; document.getElementById('bullets').innerText = ammo;
+            sfx.shot.currentTime = 0; sfx.shot.play();
+            gunRecoil = 0.2;
+
+            if (monsterDead) return;
+
+            const ray = new THREE.Raycaster(); ray.setFromCamera(new THREE.Vector2(0,0), camera);
+            const hits = ray.intersectObject(monster, true);
+            
+            if(hits.length > 0) {
+                monsterHp--;
+                document.getElementById('boss-bar-fill').style.width = ((monsterHp / maxMonsterHp) * 100) + "%"; 
+
+                if(monsterHp <= 0) {
+                    monsterDead = true;
+                    bossTimerActive = false;
+                    scene.remove(monster); 
+                    document.getElementById('boss-ui').innerHTML = "<span style='color:#0f0'>KILDRA IS VERSLAGEN!</span>";
+                    document.getElementById('mission-text').innerText = "DOEL: DE POORT IS OPEN! ONTSNAP!";
+                    document.getElementById('mission-text').style.color = "#0f0";
+                    
+                    gate.material.color.setHex(0x00ff00);
+                    gate.material.emissive.setHex(0x00aa00);
+
+                    if(lavaPhase !== 0) { lavaPhase = 3; } // Lava zakt direct weg
+                } else if (monsterHp % 5 === 0) {
+                    monsterStunned = true; 
+                    setTimeout(() => { monsterStunned = false; }, 800); 
+                }
+            }
+        }
+
+        const dialogueData = [
+            { name: "Daniel", text: "WHERE AM I? IS THIS A DREAM? HOW DO I ESCAPE?" },
+            { name: "Lost soul", text: "Hello Daniel you have been chosen to rescue our souls. A bad man named Kildra took our lives and killed us but we remain in a limbo between life and death so you need to free our souls. But beware till this day he also remains stuck with us in this limbo guarding our souls so we may suffer with him. So be on the lookout! We believe in you." },
+            { name: "Daniel", text: "Wait how does this Kildra look? and is this seriously my only way out? i don't even know you guys!" },
+            { name: "Lost soul", text: "Listen this is the only way to get out of this limbo either you do it or remain stuck in this world forever! Good luck daniel." },
+            { name: "Daniel", text: "Fine if thats my only way out i guess il free some random kids that i dont even know..." }
+        ];
+        let currentDialogue = 0, dialogueActive = false, isTyping = false, typeTimeout;
+
+        function typeWriter(text, i, currentName) {
+            if (i < text.length) {
+                document.getElementById('dialogue-text').innerHTML += text.charAt(i);
+                if (text.charAt(i) !== " ") {
+                    let talkSfx = (currentName === "Daniel") ? sfx.danielTalk : sfx.soulTalk;
+                    talkSfx.currentTime = 0;
+                    talkSfx.play().catch(e => {});
+                }
+                isTyping = true;
+                typeTimeout = setTimeout(() => typeWriter(text, i + 1, currentName), 55);
+            } else isTyping = false;
+        }
+
+        function showNextDialogue() {
+            if (isTyping) { clearTimeout(typeTimeout); document.getElementById('dialogue-text').innerText = dialogueData[currentDialogue-1].text; isTyping = false; return; }
+            if (currentDialogue < dialogueData.length) {
+                document.getElementById('dialogue-container').style.display = 'block';
+                const currentName = dialogueData[currentDialogue].name;
+                document.getElementById('dialogue-name').innerText = currentName;
+                document.getElementById('dialogue-text').innerText = "";
+                typeWriter(dialogueData[currentDialogue].text, 0, currentName);
+                currentDialogue++;
+            } else {
+                document.getElementById('dialogue-container').style.display = 'none';
+                dialogueActive = false; controls.lock();
+                document.getElementById('hud').style.display = 'block';
+                document.getElementById('map-ui').style.display = 'block';
+            }
+        }
+
+        const controls = new PointerLockControls(camera, document.body);
+        document.getElementById('start-btn').addEventListener('click', () => {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            document.getElementById('overlay').style.display = 'none';
+            sfx.fall.play();
+            dialogueActive = true; 
+            showNextDialogue();
+        });
+        document.getElementById('dialogue-container').addEventListener('click', showNextDialogue);
+
+        window.addEventListener('keydown', (e) => {
+            if(!dialogueActive) keys[e.code] = true;
+            
+            if(e.code === 'KeyE' && dungeonSpawned && !hasGun && camera.position.distanceTo(gunPickup.position) < 3) {
+                hasGun = true; 
+                gunPickup.visible = false; 
+                gunLight.visible = false; 
+                gunInHand.visible = true;
+                gunMapDot.style.display = 'none'; 
+
+                document.getElementById('ammo-ui').style.display = 'block'; 
+                document.getElementById('crosshair').style.display = 'block';
+                document.getElementById('boss-ui').style.display = 'block'; 
+                
+                document.getElementById('mission-text').innerText = "DOEL: VERMOORD KILDRA OM DE POORT TE OPENEN!";
+                document.getElementById('mission-text').style.color = "red";
+                
+                bossAttackTimer = Date.now() + 2000; 
+                bossTimerActive = true;
+            }
+
+            if(e.code === 'KeyR' && ammo < 30 && !isReloading && hasGun) {
+                isReloading = true; sfx.reload.play();
+                setTimeout(() => { ammo = 30; document.getElementById('bullets').innerText = ammo; isReloading = false; }, 1500);
+            }
+            if(e.code === 'KeyF') lightOn = !lightOn;
+            if(e.code === 'KeyM') { bigMap = !bigMap; document.getElementById('map-ui').classList.toggle('big'); }
+        });
+
+        window.addEventListener('keyup', (e) => {
+            keys[e.code] = false;
+            if (!keys['KeyW'] && !keys['KeyS'] && !keys['KeyA'] && !keys['KeyD']) { sfx.walk.pause(); sfx.run.pause(); }
+        });
+
+        window.addEventListener('mousedown', (e) => { if(e.button === 0) isShooting = true; });
+        window.addEventListener('mouseup', (e) => { if(e.button === 0) isShooting = false; });
+
+        function update() {
+            requestAnimationFrame(update);
+            const delta = clock.getDelta();
+            if (mixer) mixer.update(delta);
+
+            if(!controls.isLocked || dialogueActive) return;
+
+            if (bossTimerActive && !monsterDead) {
+                bossTimeLeft -= delta;
+                if (bossTimeLeft <= 0) {
+                    bossTimerActive = false;
+                    alert("DE TIJD IS OM! KILDRA HEEFT JE ZIEL CONSUMEERT!");
+                    location.reload();
+                } else {
+                    let min = Math.floor(bossTimeLeft / 60);
+                    let sec = Math.floor(bossTimeLeft % 60);
+                    document.getElementById('boss-timer').innerText = `0${min}:${sec < 10 ? '0' : ''}${sec}`;
+                    if (bossTimeLeft < 30) document.getElementById('boss-timer').style.color = 'red';
+                }
+            }
+
+            // --- LAVA LOGICA & BOSS PLATFORM LIFT ---
+            if (lavaPhase > 0) {
+                if (lavaPhase === 0.5) {
+                    if (Date.now() > lavaWarningTimer) {
+                        lavaPhase = 1;
+                    }
+                } else if (lavaPhase === 1) { // Stijgen
+                    lavaPlane.position.y += 0.015;
+                    safePlatforms.forEach(p => p.position.y += 0.018);
+                    if (bossPlatform) bossPlatform.position.y += 0.018; // Boss gaat mee omhoog!
+                    
+                    if (lavaPlane.position.y > 4.5) {
+                        lavaPhase = 2;
+                        lavaTimer = Date.now() + 6000; 
+                    }
+                } else if (lavaPhase === 2) { // Blijven staan
+                    if (Date.now() > lavaTimer) lavaPhase = 3;
+                } else if (lavaPhase === 3) { // Zakken
+                    lavaPlane.position.y -= 0.015;
+                    safePlatforms.forEach(p => p.position.y -= 0.018);
+                    if (bossPlatform) bossPlatform.position.y -= 0.018;
+
+                    if (lavaPlane.position.y < -2) {
+                        lavaPhase = 0; 
+                        safePlatforms.forEach(p => scene.remove(p));
+                        safePlatforms.length = 0;
+                        
+                        // Ruim Boss Platform op
+                        if (bossPlatform) {
+                            scene.remove(bossPlatform);
+                            bossPlatform = null;
+                        }
+                        // Zet Kildra terug op de grond
+                        if (!monsterDead) monster.position.y = 0; 
+                    }
+                }
+
+                let playerFeetY = playerBaseY - 1.7;
+                if (playerFeetY < lavaPlane.position.y) {
+                    playerHp -= 0.8; 
+                    document.getElementById('hp-fill').style.width = playerHp + "%";
+                    
+                    document.getElementById('overlay').style.display = 'block';
+                    document.getElementById('overlay').style.background = 'rgba(255,50,0,0.5)';
+                    document.getElementById('overlay').innerHTML = "<h1 style='font-size: 50px;'>LAVA!</h1>";
+                    setTimeout(() => { document.getElementById('overlay').style.display = 'none'; }, 50);
+
+                    if(playerHp <= 0) {
+                        alert("GEFRITUURD DOOR DE LAVA...");
+                        location.reload();
+                    }
+                }
+            }
+
+            // --- SPELER ZWAARTEKRACHT & PLATFORM DETECTIE ---
+            let onPlatform = false;
+            let targetFloorY = 1.7;
+
+            if (lavaPhase !== 0) {
+                for(let p of safePlatforms) {
+                    if (Math.abs(camera.position.x - p.position.x) < 3.2 && Math.abs(camera.position.z - p.position.z) < 3.2) {
+                        let platSurface = p.position.y + 0.5;
+                        let playerFeet = playerBaseY - 1.7;
+                        if (platSurface <= playerFeet + 2.0) { 
+                            onPlatform = true;
+                            targetFloorY = platSurface + 1.7;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (onPlatform) {
+                playerBaseY = targetFloorY; 
+                velocityY = 0;
+            } else {
+                if (playerBaseY > 1.7) {
+                    velocityY -= 0.02; 
+                    playerBaseY += velocityY;
+                    if (playerBaseY <= 1.7) {
+                        playerBaseY = 1.7; 
+                        velocityY = 0;
+                    }
+                }
+            }
+
+            if (screenShake > 0) {
+                camera.position.x += (Math.random() - 0.5) * screenShake;
+                camera.position.z += (Math.random() - 0.5) * screenShake;
+                screenShake *= 0.9; 
+                if (screenShake < 0.01) screenShake = 0;
+            }
+
+            const time = Date.now() * 0.006;
+            const isMoving = keys['KeyW'] || keys['KeyS'] || keys['KeyA'] || keys['KeyD'];
+            const moveSpeed = (keys['ShiftLeft'] && stamina > 5) ? 0.3 : 0.15;
+
+            if(keys['ShiftLeft'] && stamina > 0) stamina -= 0.6; else if(stamina < 100) stamina += 0.3;
+            document.getElementById('stamina-fill').style.width = stamina + "%";
+
+            if(isShooting && Date.now() > fireRateTimer) {
+                shoot();
+                fireRateTimer = Date.now() + 120; 
+            }
+
+            if(isMoving) {
+                if(Date.now() > stepTimer && playerBaseY <= 1.8) { 
+                    sfx.walk.pause(); sfx.run.pause();
+                    const g = keys['ShiftLeft'] ? sfx.run : sfx.walk;
+                    g.currentTime = 0; g.play();
+                    stepTimer = Date.now() + (keys['ShiftLeft'] ? 350 : 600);
+                }
+                camera.position.y = playerBaseY + Math.sin(time * 2) * (keys['ShiftLeft'] ? 0.1 : 0.05);
+            } else {
+                camera.position.y = playerBaseY;
+            }
+
+            if (hasGun) {
+                if (gunRecoil > 0.001) {
+                    gunInHand.position.z = -0.5 + gunRecoil;
+                    gunInHand.rotation.x = gunRecoil * 0.5;
+                    gunRecoil *= 0.8; 
+                } else {
+                    gunInHand.position.z = -0.5;
+                    gunInHand.rotation.x = 0;
+                    gunRecoil = 0;
+                }
+            }
+
+            const oldX = camera.position.x, oldZ = camera.position.z;
+            if(keys['KeyW']) controls.moveForward(moveSpeed); if(keys['KeyS']) controls.moveForward(-moveSpeed);
+            if(keys['KeyA']) controls.moveRight(-moveSpeed); if(keys['KeyD']) controls.moveRight(moveSpeed);
+            
+            const pBox = new THREE.Box3().setFromCenterAndSize(camera.position, new THREE.Vector3(1,1,1));
+            let hitWall = false;
+            for(let w of walls) {
+                if(pBox.intersectsBox(w)) { hitWall = true; break; }
+            }
+            if(hitWall) { camera.position.x = oldX; camera.position.z = oldZ; }
+
+            // --- MONSTER LOGICA, MOVEMENT & ATTACKS ---
+            if (!monsterDead) {
+                
+                // BEWEGING VAN DE BOSS (Afhankelijk van of Lava up is)
+                if (lavaPhase === 0) {
+                    // Normaal achterna rennen
+                    if(camera.position.distanceTo(monster.position) < 30 && !monsterStunned) {
+                        const dir = new THREE.Vector3().subVectors(camera.position, monster.position).normalize();
+                        
+                        monster.position.x += dir.x * monsterSpeed;
+                        let mBoxX = new THREE.Box3().setFromCenterAndSize(monster.position, new THREE.Vector3(1.5, 2, 1.5));
+                        for(let w of walls) {
+                            if(mBoxX.intersectsBox(w)) { monster.position.x -= dir.x * monsterSpeed; break; }
+                        }
+
+                        monster.position.z += dir.z * monsterSpeed;
+                        let mBoxZ = new THREE.Box3().setFromCenterAndSize(monster.position, new THREE.Vector3(1.5, 2, 1.5));
+                        for(let w of walls) {
+                            if(mBoxZ.intersectsBox(w)) { monster.position.z -= dir.z * monsterSpeed; break; }
+                        }
+                    }
+                } else {
+                    // Blijf strak op het Boss Platform staan tijdens de lava fase!
+                    if (bossPlatform) {
+                        monster.position.x = bossPlatform.position.x;
+                        monster.position.z = bossPlatform.position.z;
+                        monster.position.y = bossPlatform.position.y + 0.5; // Sta mooi bovenop
+                    }
+                }
+                
+                // Altijd naar de speler kijken (blijft netjes rechtop door monster.position.y te gebruiken)
+                monster.lookAt(camera.position.x, monster.position.y, camera.position.z);
+                
+                if(camera.position.distanceTo(monster.position) < 2.2 && !monsterStunned && playerBaseY < 3) { 
+                    alert("GEGREPEN DOOR KILDRA"); 
+                    location.reload(); 
+                }
+
+                // AANVAL SELECTOR
+                if (hasGun && !monsterStunned && Date.now() > bossAttackTimer) {
+                    
+                    // ALS LAVA ACTIEF IS: Alleen maar stenen gooien vanaf zijn platform!
+                    if (lavaPhase >= 1) {
+                        for(let i = -1; i <= 1; i++) {
+                            const stone = new THREE.Mesh(stoneGeo, stoneMat);
+                            stone.position.copy(monster.position);
+                            stone.position.y += 1.5; // Gooit nu correct vanaf de hoogte waar hij staat!
+                            scene.add(stone);
+
+                            const dirToPlayer = new THREE.Vector3().subVectors(camera.position, stone.position).normalize();
+                            dirToPlayer.x += i * 0.15 + (Math.random() - 0.5) * throwInaccuracy; 
+                            dirToPlayer.z += i * 0.15 + (Math.random() - 0.5) * throwInaccuracy; 
+                            
+                            stones.push({ mesh: stone, velocity: dirToPlayer.multiplyScalar(0.4) });
+                        }
+                        // Blijft elke ~2 seconden snel vuren vanaf zijn lift
+                        bossAttackTimer = Date.now() + 2000 + Math.random() * 500; 
+
+                    // ALS ER GEEN LAVA IS: Kies willekeurige aanval
+                    } else if (lavaPhase === 0) {
+                        let rand = Math.random();
+                        
+                        if (rand < 0.33) { // 1. Stenen aanval
+                            for(let i = -1; i <= 1; i++) {
+                                const stone = new THREE.Mesh(stoneGeo, stoneMat);
+                                stone.position.copy(monster.position);
+                                stone.position.y = 2; 
+                                scene.add(stone);
+
+                                const dirToPlayer = new THREE.Vector3().subVectors(camera.position, stone.position).normalize();
+                                dirToPlayer.x += i * 0.15 + (Math.random() - 0.5) * throwInaccuracy; 
+                                dirToPlayer.z += i * 0.15 + (Math.random() - 0.5) * throwInaccuracy; 
+                                
+                                stones.push({ mesh: stone, velocity: dirToPlayer.multiplyScalar(0.4) });
+                            }
+                            bossAttackTimer = Date.now() + 2500 + Math.random() * 1000;
+                        
+                        } else if (rand < 0.66) { // 2. Spijker aanval
+                            const numSpikes = 6;
+                            for (let i = 0; i < numSpikes; i++) {
+                                const warningGeo = new THREE.CircleGeometry(3, 32);
+                                const warningMat = new THREE.MeshBasicMaterial({color: 0xff0000, transparent: true, opacity: 0.4, side: THREE.DoubleSide});
+                                const warningMesh = new THREE.Mesh(warningGeo, warningMat);
+                                warningMesh.rotation.x = -Math.PI / 2;
+                                
+                                let spawnX, spawnZ;
+                                if (i === 0) {
+                                    spawnX = camera.position.x;
+                                    spawnZ = camera.position.z;
+                                } else {
+                                    spawnX = (Math.random() - 0.5) * 70; 
+                                    spawnZ = (Math.random() - 0.5) * 70;
+                                }
+                                warningMesh.position.set(spawnX, 0.1, spawnZ); 
+                                scene.add(warningMesh);
+
+                                spikesArray.push({
+                                    mesh: warningMesh,
+                                    triggerTime: Date.now() + 1500, 
+                                    active: false,
+                                    endTime: Date.now() + 2500 
+                                });
+                            }
+                            bossAttackTimer = Date.now() + 3000 + Math.random() * 1000;
+
+                        } else { // 3. LAVA AANVAL
+                            lavaPhase = 0.5; // Start WAARSCHUWING
+                            lavaWarningTimer = Date.now() + 3000; // 3s de tijd
+                            
+                            screenShake = 0.5;
+                            sfx.fall.play(); 
+
+                            document.getElementById('warning-text').style.display = 'block';
+                            setTimeout(() => { document.getElementById('warning-text').style.display = 'none'; }, 3000);
+
+                            // Spawn Player Platforms
+                            for(let i=0; i<3; i++) {
+                                const pGeo = new THREE.BoxGeometry(6, 1, 6);
+                                const pMat = new THREE.MeshStandardMaterial({color: 0x444444, roughness: 0.9});
+                                const pMesh = new THREE.Mesh(pGeo, pMat);
+                                
+                                let pX = (Math.random() - 0.5) * 60;
+                                let pZ = (Math.random() - 0.5) * 60;
+                                
+                                if (i === 0) { // Zeker 1 in de buurt
+                                    pX = camera.position.x + (Math.random() - 0.5) * 15;
+                                    pZ = camera.position.z + (Math.random() - 0.5) * 15;
+                                }
+                                pMesh.position.set(pX, -0.5, pZ);
+                                scene.add(pMesh);
+                                safePlatforms.push(pMesh);
+                            }
+
+                            // --- NIEUW: SPAWN HET BOSS PLATFORM ---
+                            // Bereken een positie ver weg van de speler
+                            let bx = camera.position.x > 0 ? camera.position.x - 30 : camera.position.x + 30;
+                            let bz = camera.position.z > 0 ? camera.position.z - 30 : camera.position.z + 30;
+                            
+                            // Hou hem binnen de arena grenzen
+                            bx = Math.max(-35, Math.min(35, bx));
+                            bz = Math.max(-35, Math.min(35, bz));
+
+                            const bpGeo = new THREE.BoxGeometry(6, 1, 6);
+                            const bpMat = new THREE.MeshStandardMaterial({color: 0x660000, roughness: 0.9}); // Iets roder zodat je ziet waar hij is
+                            bossPlatform = new THREE.Mesh(bpGeo, bpMat);
+                            bossPlatform.position.set(bx, -0.5, bz);
+                            scene.add(bossPlatform);
+
+                            // Teleporteer Kildra DIRECT naar zijn platform
+                            monster.position.set(bx, 0, bz);
+
+                            bossAttackTimer = Date.now() + 3000; // Wacht 3 seconden totdat de lift start met stijgen
+                        }
+                    }
+                }
+            }
+
+            spikesArray.forEach((s, index) => {
+                if (!s.active && Date.now() > s.triggerTime) {
+                    s.active = true;
+                    s.mesh.visible = false; 
+
+                    screenShake = 0.3;
+
+                    s.spikeGroup = new THREE.Group();
+                    s.spikeGroup.position.set(s.mesh.position.x, 0, s.mesh.position.z);
+                    
+                    const spikeGeo = new THREE.ConeGeometry(0.3, 6, 8); 
+                    const spikeMat = new THREE.MeshStandardMaterial({color: 0x550000, roughness: 0.2, metalness: 0.8});
+
+                    for(let i=0; i<20; i++) { 
+                        const spike = new THREE.Mesh(spikeGeo, spikeMat);
+                        const angle = Math.random() * Math.PI * 2;
+                        const r = Math.sqrt(Math.random()) * 2.8; 
+                        
+                        spike.position.set(Math.cos(angle) * r, 3, Math.sin(angle) * r);
+                        spike.rotation.x = (Math.random() - 0.5) * 0.5;
+                        spike.rotation.z = (Math.random() - 0.5) * 0.5;
+                        
+                        s.spikeGroup.add(spike);
+                    }
+                    scene.add(s.spikeGroup);
+
+                    const dist = new THREE.Vector2(camera.position.x, camera.position.z).distanceTo(new THREE.Vector2(s.mesh.position.x, s.mesh.position.z));
+                    if (dist < 3.5 && playerBaseY < 3) { 
+                        playerHp -= 35; 
+                        document.getElementById('hp-fill').style.width = playerHp + "%";
+                        
+                        document.getElementById('overlay').style.display = 'block';
+                        document.getElementById('overlay').style.background = 'rgba(255,0,0,0.8)';
+                        document.getElementById('overlay').innerHTML = "<h1 style='font-size: 50px;'>GESPIEST!</h1>";
+                        setTimeout(() => { document.getElementById('overlay').style.display = 'none'; }, 300);
+
+                        if(playerHp <= 0) {
+                            alert("DOORBOORD DOOR KILDRA'S SPIJKERS...");
+                            location.reload();
+                        }
+                    }
+                }
+                
+                if (Date.now() > s.endTime) {
+                    scene.remove(s.mesh);
+                    if (s.spikeGroup) scene.remove(s.spikeGroup);
+                    spikesArray.splice(index, 1);
+                }
+            });
+
+            stones.forEach((s, index) => {
+                s.mesh.position.add(s.velocity);
+                s.mesh.rotation.x += 0.1;
+                s.mesh.rotation.y += 0.1;
+
+                if(s.mesh.position.distanceTo(camera.position) < 1.5) {
+                    playerHp -= 20; 
+                    document.getElementById('hp-fill').style.width = playerHp + "%";
+                    
+                    document.getElementById('overlay').style.display = 'block';
+                    document.getElementById('overlay').style.background = 'rgba(255,0,0,0.5)';
+                    document.getElementById('overlay').innerHTML = "";
+                    setTimeout(() => { document.getElementById('overlay').style.display = 'none'; }, 200);
+
+                    scene.remove(s.mesh);
+                    stones.splice(index, 1);
+
+                    if(playerHp <= 0) {
+                        alert("DOODGEGOOID DOOR KILDRA...");
+                        location.reload();
+                    }
+                } 
+                else if (s.mesh.position.distanceTo(camera.position) > 60) {
+                    scene.remove(s.mesh);
+                    stones.splice(index, 1);
+                }
+            });
+
+            const euler = new THREE.Euler().setFromQuaternion(camera.quaternion, 'YXZ');
+            mapRot.style.transform = bigMap ? `rotate(0rad)` : `rotate(${euler.y}rad)`;
+            const scale = bigMap ? 6 : 3;
+            const updateDot = (dot, pos) => {
+                const center = bigMap ? (window.innerHeight * 0.4) : 100;
+                dot.style.left = ((pos.x - camera.position.x) * scale + center) + 'px';
+                dot.style.top = ((pos.z - camera.position.z) * scale + center) + 'px';
+            };
+
+            if (!monsterDead) {
+                const enemyDot = document.createElement('div'); enemyDot.className = 'enemy-dot';
+                updateDot(enemyDot, monster.position); mapRot.appendChild(enemyDot);
+                setTimeout(() => enemyDot.remove(), 16);
+            }
+
+            if (dungeonSpawned && !hasGun) {
+                updateDot(gunMapDot, gunPickup.position);
+            }
+
+            items.forEach(it => {
+                if(it.mesh.visible) {
+                    updateDot(it.dot, it.mesh.position);
+                    if(camera.position.distanceTo(it.mesh.position) < 2.5) {
+                        it.mesh.visible = false; it.dot.style.display = 'none';
+                        found++; document.getElementById('count').innerText = found;
+                        sfx.soul.play();
+                        
+                        if (found >= 4 && !dungeonSpawned) {
+                            dungeonSpawned = true;
+                            screenShake = 0.5; 
+                            sfx.fall.play(); 
+
+                            monsterSpeed = 0.09; 
+                            throwInaccuracy = 0.05; 
+
+                            mazeMeshes.forEach(m => {
+                                scene.remove(m);
+                                if(m.userData.icon) m.userData.icon.remove();
+                            });
+                            walls.length = 0; 
+
+                            floor.material.color.setHex(0x220000);
+                            gate.material.color.setHex(0xff0000);
+                            gate.material.emissive.setHex(0x440000);
+
+                            createArenaWall(0, 40, 80, 2); 
+                            createArenaWall(-25, -35, 30, 2); 
+                            createArenaWall(25, -35, 30, 2);  
+                            createArenaWall(40, 0, 2, 80); 
+                            createArenaWall(-40, 0, 2, 80); 
+
+                            gunPickup.position.set(gunSpawnSpot.x, 0.5, gunSpawnSpot.z); 
+                            gunLight.position.set(gunSpawnSpot.x, 1.2, gunSpawnSpot.z);
+                            gunPickup.visible = true;
+                            gunLight.visible = true;
+                            gunMapDot.style.display = 'block';
+                            
+                            document.getElementById('mission-text').innerText = "HET DOOLHOF VERDWIJNT! VIND DE AK-47!";
+                            document.getElementById('mission-text').style.color = "yellow";
+                            
+                            document.getElementById('overlay').style.display = 'block';
+                            document.getElementById('overlay').style.background = 'rgba(255,0,0,0.5)';
+                            document.getElementById('overlay').innerHTML = "";
+                            setTimeout(() => { document.getElementById('overlay').style.display = 'none'; }, 500);
+                        }
+                    }
+                }
+            });
+
+            updateDot(gateDot, gate.position);
+            scene.children.forEach(c => { if(c.userData.icon) updateDot(c.userData.icon, c.position); });
+
+            flashlight.visible = lightOn;
+            if(lightOn) battery -= 0.01;
+            document.getElementById('battery-fill').style.width = battery + "%";
+
+            if(found >= 4 && monsterDead && camera.position.distanceTo(gate.position) < 7) { 
+                alert("POORT BEREIKT! JE BENT VRIJ!"); 
+                location.reload(); 
+            } else if (found >= 4 && !monsterDead && camera.position.distanceTo(gate.position) < 7) {
+                document.getElementById('mission-text').innerText = "DE POORT IS VERGRENDELD! DOOD KILDRA!";
+                document.getElementById('mission-text').style.color = "red";
+            }
+
+            renderer.render(scene, camera);
+        }
+        update();
+    </script>
+</body>
+</html>
