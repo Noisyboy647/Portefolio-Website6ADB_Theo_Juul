@@ -363,7 +363,15 @@ header h1 {
 
 .progress-bar7{
   height: 8px;
-  width: 0%;
+  width: 15%;
+  background: #0078ff;
+  border-radius: 5px;
+}
+
+/* new bar for second March project */
+.progress-bar8{
+  height: 8px;
+  width: 30%;
   background: #0078ff;
   border-radius: 5px;
 }
