@@ -216,8 +216,17 @@ header h1 {
  }
 
 .Loadingbar11 { 
-  background: linear-gradient(to right, #3b82f6 0%, #e5e7eb 0%);
+  background: linear-gradient(to right, #3b82f6 15%, #e5e7eb 0%);
  }
+
+/* nieuw voor maart 11 project */
+.Loadingbar14 { 
+  background: linear-gradient(to right, #3b82f6 30%, #e5e7eb 0%);
+ }
+
+/* ensure loadingbar14 always shows color */
+.Loadingbar14 { height: 10px; }
+
 
 
  .Loadingbar12 { 
