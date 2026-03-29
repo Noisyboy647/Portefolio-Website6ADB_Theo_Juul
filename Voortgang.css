@@ -347,7 +347,7 @@ header h1 {
 
 .progress-bar5{
   height: 8px;
-  width: 30%;
+  width: 100%;
   background: #0078ff;
   border-radius: 5px;
 }
@@ -355,7 +355,7 @@ header h1 {
 
 .progress-bar6{
   height: 8px;
-  width: 50%;
+  width: 100%;
   background: #0078ff;
   border-radius: 5px;
 }
@@ -363,7 +363,7 @@ header h1 {
 
 .progress-bar7{
   height: 8px;
-  width: 15%;
+  width: 100%;
   background: #0078ff;
   border-radius: 5px;
 }
@@ -371,11 +371,18 @@ header h1 {
 /* new bar for second March project */
 .progress-bar8{
   height: 8px;
-  width: 30%;
+  width: 70%;
   background: #0078ff;
   border-radius: 5px;
 }
 
+
+.progress-bar9{
+  height: 8px;
+  width: 0%;
+  background: #0078ff;
+  border-radius: 5px;
+}
 
 .percent {
   font-weight: bold;
